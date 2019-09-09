@@ -1,16 +1,25 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
     <transition name="fade">
       <router-view class='childView' />
     </transition>
-
+    <tab-bar></tab-bar>
   </div>
 </template>
+<script>
+  import tabBar from '@/components/tabbar/index'
+  export default {
+    name: 'App',
+    data(){
+      return {
 
+      }
+    },
+    components:{
+      tabBar
+    }
+  }
+</script>
 <style lang="scss">
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
