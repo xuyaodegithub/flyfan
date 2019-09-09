@@ -21,7 +21,7 @@
         data(){
           return {
               areaList:area,
-              imgs:'https://ss0.bom/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2786741331,312930537&fm=26&gp=0.jpg'
+              imgs:'https://ss0.bom/70cFvHSh_Q1YnxGkpoWK1HF6hsshy/it/u=2786741331,312930537&fm=26&gp=0.jpg'
           }
         },
         components: {
