@@ -2,18 +2,17 @@
     <section class="user">
         <div class="flex j-b userinfo a-i">
             <div class="flex a-i">
-                <img src="../../assets/images/my.jpg" alt="" class="logo radius50">
-                <div>
-                   <p>飞奔的蚂蚁</p>
-                   <p>ID: 16605813146</p>
+                <div class="logo">
+                    <img src="http://thirdwx.qlogo.cn/mmopen/PiajxSqBRaEIXlLl85lF4fzgzCicZBbRJxHVvoxNrCzO80xoKhuicT4g88FNbJVQIZDkekqLK5s6cweLhDSrLJQ5g/132" alt="">
+                    <img src="../../assets/images/header_border1.png" alt="">
                 </div>
+                <div class="name">
+                   <p>飞奔的蚂蚁</p>
+                   <p>青铜会员</p>
+                   <p>推广码：ec76d2</p>
+                </div>
+                <div>查看升级进度</div>
             </div>
-            <div class="mess radius50">
-                <img src="../../assets/images/mess.png" alt="">
-            </div>
-        </div>
-        <div class="join">
-            <img src="../../assets/images/join2.jpg" alt="">
         </div>
         <div class="tabs flex j-b a-i">
             <div v-for="(item,index) in tabs" :key="index">
@@ -63,22 +62,32 @@
         padding: .3rem;
     }
      .logo{
-        display: block;
-        width: 1.3rem;
-        height: 1.3rem;
+        width: 1.5rem;
+        height: 1.5rem;
         margin-right: .3rem;
+         position: relative;
+         img{
+             display: block;
+             width: 100%;
+             &:first-child{
+                 border-radius: .2rem;
+             }
+             &:last-child{
+                 position: absolute;
+                 top: 0;
+                 left: 0;
+             }
+         }
     }
-    .flex p:first-child{
-        margin-bottom: 0.2rem;
-    }
-    .mess{
-        padding: .15rem;
-        background-color: #efeff1;
-        box-shadow: 0 0 .15rem #178bf0 inset;
-    }
-    .userinfo img:last-child{
-        display: block;
-        width: .5rem;
+    .name{
+        font-size: .36rem;
+        color: #333;
+        p:nth-child(2){
+            font-size: .28rem;
+        }
+        p:last-child{
+            font-size: .24rem;
+        }
     }
     .join{
         padding: .4rem .15rem .5rem;

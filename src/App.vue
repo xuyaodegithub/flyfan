@@ -27,5 +27,14 @@
   -moz-osx-font-smoothing: grayscale;
   min-height:100%;
 }
+  .fade-enter-active{
+    transform: translateX(100%);
+  }
+  .fade-leave-active{
+    transform: translateX(-100%);
+  }
+  .childView{
+    transition: all .15s;
+  }
 
 </style>

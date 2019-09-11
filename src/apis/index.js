@@ -3,9 +3,9 @@
  **/
 import https from './request'
 /**
- * 上传图片
+ * 首页
  **/
- export const uploadImgApi=data=> https.upPost('/webMatting/matting2',data);
+ export const indexData=data=> https.get('/index.php',data);
 
 
 
