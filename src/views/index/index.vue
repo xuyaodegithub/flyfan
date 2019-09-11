@@ -25,9 +25,9 @@
             <div class="product">
                 <div v-for="(item,index) in productList" :key="index">
                     <div class="p_title flex j-b a-i">
-                        <span>{{item.title}}</span>
+                        <span>{{item.name}}</span>
                         <div>
-                            <van-tag color="#f2826a" plain v-for="(val,key) in item.tags" :key="key">{{val}}</van-tag>
+                            <van-tag color="#f2826a" plain v-for="(val,key) in item.tag.split(',')" :key="key">{{val}}</van-tag>
                         </div>
                     </div>
                     <div class="flex a-i j-b content">
@@ -36,15 +36,15 @@
                             <van-icon name="fire" />
                         </div>
                         <div>
-                            <p class="ed">{{item.price}}</p>
+                            <p class="ed">{{item.edqj}}</p>
                             <p>额度范围</p>
                         </div>
                         <div>
-                            <p>{{item.ll}}</p>
+                            <p>{{item.zdlv}}</p>
                             <p>最低利率</p>
                         </div>
                         <div>
-                            <p>{{item.data}}</p>
+                            <p>{{item.qx}}</p>
                             <p>期限</p>
                         </div>
                     </div>
@@ -80,30 +80,7 @@
                   {title:'返佣表',img:hot3},
                   {title:'大银加系统',img:hot4},
               ],
-              productList:[
-                  {
-                      title:'企税贷',
-                      tags:['线上申请','审批快','额度高'],
-                      img:'http://bank-mg.dachagui.com/statics/upload/7704/6932/6a55dbb0a18a59df979b0b4d3de8cfcf.png',
-                      price:'3w-150w',
-                      ll:'0.85%',
-                      data:'12-36期'
-                  }, {
-                      title:'企税贷',
-                      tags:['线上申请','审批快','额度高'],
-                      img:'http://bank-mg.dachagui.com/statics/upload/7704/6932/6a55dbb0a18a59df979b0b4d3de8cfcf.png',
-                      price:'3w-150w',
-                      ll:'0.85%',
-                      data:'12-36期'
-                  }, {
-                      title:'企税贷',
-                      tags:['线上申请','审批快','额度高'],
-                      img:'http://bank-mg.dachagui.com/statics/upload/7704/6932/6a55dbb0a18a59df979b0b4d3de8cfcf.png',
-                      price:'3w-150w',
-                      ll:'0.85%',
-                      data:'12-36期'
-                  },
-              ]
+              productList:[]
           }
         },
         mounted(){
@@ -128,7 +105,7 @@
                     table:'product',
                 }
                 indexData(data).then(res=>{
-
+                    this.productList=res.rows
                 })
             }
         }
@@ -205,8 +182,8 @@
                 position: relative;
                 i{
                     position: absolute;
-                    top: -0.15rem;
-                    right: -0.15rem;
+                    top: -0.2rem;
+                    right: -0.2rem;
                     color: #e62c10;
                     font-size: .28rem;
                 }

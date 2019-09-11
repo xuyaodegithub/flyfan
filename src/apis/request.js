@@ -7,7 +7,7 @@ import { Toast } from 'vant'
 // instance.defaults.headers['Content-Type']='application/x-www-form-urlencoded;charset=UTF-8'
 // axios.defaults.headers.post['Content-Type']='application/x-www-form-urlencoded;charset=UTF-8';//全局设置请求头//表示跨域请求时是否需要使用凭证默认false
 // axios.defaults.baseURL='http://test-admin-h5.olquan.cn'//设置域名
-  axios.defaults.withCredentials=true//表示跨域请求时是否需要使用凭证,默认false，一般请求携带cookie是设置为true
+//   axios.defaults.withCredentials=true//表示跨域请求时是否需要使用凭证,默认false，一般请求携带cookie是设置为true
 // })
 const instance  =axios.create({
   // timeout:10000,
@@ -25,15 +25,15 @@ instance.interceptors.request.use(function (config) {//为自定义axios设置�
 instance.interceptors.response.use(function (response) {//为自定义axios设置响应拦截器
   // 对响应数据做点什么
   const res=response.data
-  if(res.code===0){
+  // if(res.code===0){
     return res
-  }else if(res.code==1100){
-
-  } else{
-    Toast(response.data.msg)
-    return res
-    // return Promise.reject(response.data)
-  }
+  // }else if(res.code==1100){
+  //
+  // } else{
+  //   Toast(response.data.msg)
+  //   return res
+  //   // return Promise.reject(response.data)
+  // }
 }, function (err) {
   // 对请求错误做些什么
   if (!navigator.onLine) {
