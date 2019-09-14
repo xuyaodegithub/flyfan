@@ -32,7 +32,7 @@
                     </div>
                     <div class="flex a-i j-b content">
                         <div class="posi">
-                            <img :src="item.img" alt="">
+                            <img v-lazy="item.img" alt="">
                             <van-icon name="fire" />
                         </div>
                         <div>
@@ -80,11 +80,16 @@
                   {title:'返佣表',img:hot3},
                   {title:'大银加系统',img:hot4},
               ],
-              productList:[]
+              productList:[],
+              page:1,
+              rows:10,
+              stopScoll:false,
+              dataloading:false
           }
         },
         mounted(){
-            this.initData()
+            this.initData(1)
+            window.addEventListener('scroll',this.initscroll)
             // console.log(this.$wx)
         },
         components: {
@@ -98,15 +103,31 @@
 
         },
         methods:{
-            initData(){
+            initData(key){
+                this.dataloading=true;
                 let data={
                     c:'ajax',
                     a:'query',
                     table:'product',
+                    page:this.page,
+                    rows:this.rows
                 }
                 indexData(data).then(res=>{
-                    this.productList=res.rows
+                    if(res.rows.length<10)this.stopScoll=true;
+                    if(key===1)this.productList=res.rows;
+                    else this.productList=[...this.productList,...res.rows]
+                    this.dataloading=false;
                 })
+            },
+            initscroll(){
+                if(this.stopScoll || this.dataloading)return;
+                const scrollTop=document.documentElement.scrollTop || document.body.scrollTop;
+                const clientH=document.documentElement.clientHeight;
+                const pageH=document.body.scrollHeight || document.documentElement.scrollHeight;
+                if(scrollTop+clientH>pageH-20){
+                    this.page+=1;
+                    this.initData(2)
+                }
             }
         }
     }
@@ -170,7 +191,7 @@
                         margin-bottom: .15rem;
                     }
                     p:last-child{
-                        font-size: .2rem;
+                        font-size: .24rem;
                         color: #a4a4a4;
                     }
                     .ed{

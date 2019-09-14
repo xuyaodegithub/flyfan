@@ -1,0 +1,25 @@
+.login .van-field__left-icon,.register .van-field__left-icon{
+    margin-right: .2rem;
+    color: #fe4a0f;
+}
+.login .van-button,.register .input > .van-button{
+    width: 80%;
+    margin: 0 auto;
+    display: block;
+    margin-top: .6rem;
+    border-radius: .44rem;
+    box-shadow: 0 0 .1rem #fe4a0f;
+}
+.user .van-grid-item__content{
+    padding:.16rem;
+}
+.user .van-grid{
+    padding: .16rem 0;
+    background-color: #fff;
+}
+.user .van-grid-item__content::after{
+    border: none;
+}
+.agent  .van-tabs__nav--card,.Record  .van-tabs__nav--card{
+    margin: 0;
+}

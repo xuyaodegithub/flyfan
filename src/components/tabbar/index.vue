@@ -8,8 +8,8 @@
                 :z-index="99"
         >
             <van-tabbar-item icon="icon iconfont icon-shouye" to="/" replace>首页</van-tabbar-item>
-            <van-tabbar-item icon="icon iconfont icon-tuiguang-kuai" to="/extension" replace>我的代理</van-tabbar-item>
-            <van-tabbar-item icon="icon iconfont icon-jilu" to="/team" replace>下款记录</van-tabbar-item>
+            <van-tabbar-item icon="icon iconfont icon-tuiguang-kuai" to="/myAgent" replace>我的代理</van-tabbar-item>
+            <van-tabbar-item icon="icon iconfont icon-jilu" to="/Record" replace>下款记录</van-tabbar-item>
             <van-tabbar-item icon="icon iconfont icon-wode1" to="/user" replace>个人中心</van-tabbar-item>
         </van-tabbar>
     </div>

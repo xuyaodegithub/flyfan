@@ -1,9 +1,9 @@
 <template>
-  <div id="app">
+  <div id="app" :style="styles">
     <transition name="fade">
       <router-view class='childView' />
     </transition>
-    <tab-bar></tab-bar>
+    <tab-bar  v-if="whiteList.indexOf($route.name) > -1"></tab-bar>
   </div>
 </template>
 <script>
@@ -12,9 +12,15 @@
     name: 'App',
     data(){
       return {
-
+          whiteList: ['首页', '我的代理', '下款记录', '个人中心'],
+          styleB:['登录','注册']
       }
     },
+      computed: {
+          styles() {
+              return  this.styleB.includes(this.$route.name) ? {backgroundColor: '#fff'} : {}
+          }
+      },
     components:{
       tabBar
     }
