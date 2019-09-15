@@ -68,6 +68,8 @@
         },
         methods:{
             changTab(idx,tit){
+                this.stopScoll=false
+                this.dataloading=false
                 this.userRecordList(1)
             },
             userRecordList(k){

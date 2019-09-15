@@ -11,7 +11,7 @@
                 left-icon="volume-o"
         />
         <div class="flex a-i btns">
-            <div v-for="(item,index) in btns">
+            <div v-for="(item,index) in btns" @click="toPage(item)">
                 <img :src="item.img" alt="">
                 <p>{{item.title}}</p>
             </div>
@@ -75,10 +75,10 @@
               ],
               msg:'公告：百万现金奖励，5%超高三级返佣超高三级返佣',
               btns:[
-                  {title:'产品列表',img:hot1},
-                  {title:'产品大纲',img:hot2},
-                  {title:'返佣表',img:hot3},
-                  {title:'大银加系统',img:hot4},
+                  {title:'产品列表',img:hot1,url:'/productList'},
+                  {title:'产品大纲',img:hot2,url:'/productOutline'},
+                  {title:'返佣表',img:hot3,url:'/returnTable'},
+                  {title:'大银加系统',img:hot4,url:'/bigAdd'},
               ],
               productList:[],
               page:1,
@@ -103,6 +103,9 @@
 
         },
         methods:{
+            toPage(val){
+                this.$router.push(val.url)
+            },
             initData(key){
                 this.dataloading=true;
                 let data={

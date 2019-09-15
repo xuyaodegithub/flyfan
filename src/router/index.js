@@ -32,6 +32,22 @@ const routers  = new Router({
       path: '/user',
       name: '个人中心',
       component: () => import(/* webpackChunkName: "userCenter" */ '../views/userCenter/index.vue')
+    },{
+      path: '/productList',
+      name: '产品列表',
+      component: () => import(/* webpackChunkName: "productList" */ '../views/index/productList/index.vue')
+    },{
+      path: '/productOutline',
+      name: '产品大纲',
+      component: () => import(/* webpackChunkName: "productOutline" */ '../views/index/productOutline/index.vue')
+    },{
+      path: '/returnTable',
+      name: '返佣表',
+      component: () => import(/* webpackChunkName: "returnTable" */ '../views/index/returnTable/index.vue')
+    },{
+      path: '/bigAdd',
+      name: '大银加系统',
+      component: () => import(/* webpackChunkName: "bigAdd" */ '../views/index/bigAdd/index.vue')
     },
   ],
   scrollBehavior (to, from, savedPosition) {//路由切换时滚轮位置//scrollBehavior 方法接收 to 和 from 路由对象。第三个参数 savedPosition 当且仅当 popstate 导航 (通过浏览器的 前进/后退 按钮触发) 时才可用。

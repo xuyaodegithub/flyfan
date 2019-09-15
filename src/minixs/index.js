@@ -1,14 +1,20 @@
-export const mixins={
+const mixins={
     data(){
         return {
-            a:1,
-            b:2,
-            c:3
+            stopScoll:false,
+            dataloading:false
         }
     },
     methods:{
-        funa(){
-            console.log('helllo mixins')
+        initscroll(page,callback){
+            if(this.stopScoll || this.dataloading)return;
+            const scrollTop=document.documentElement.scrollTop || document.body.scrollTop;
+            const clientH=document.documentElement.clientHeight;
+            const pageH=document.body.scrollHeight || document.documentElement.scrollHeight;
+            if(scrollTop+clientH>pageH-20){
+                page+=1;
+                callback(2)
+            }
         }
     },
     mounted(){
@@ -18,3 +24,4 @@ export const mixins={
 
     },
 }
+export default mixins

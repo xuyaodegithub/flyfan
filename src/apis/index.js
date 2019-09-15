@@ -7,6 +7,10 @@ import https from './request'
  **/
  export const indexData=data=> https.get('/index.php',data);
 /**
+ * 产品列表
+ **/
+ export const productList=data=> https.get('/ajax/query/product',data);
+/**
  * 注册
  **/
  export const userRegister=data=> https.post('/Reg/index',data);
