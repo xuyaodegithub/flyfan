@@ -48,6 +48,10 @@ const routers  = new Router({
       path: '/bigAdd',
       name: '大银加系统',
       component: () => import(/* webpackChunkName: "bigAdd" */ '../views/index/bigAdd/index.vue')
+    },{
+      path: '/detial',
+      name: '商品详情',
+      component: () => import(/* webpackChunkName: "productDetial" */ '../views/index/procuctDetial/index.vue')
     },
   ],
   scrollBehavior (to, from, savedPosition) {//路由切换时滚轮位置//scrollBehavior 方法接收 to 和 from 路由对象。第三个参数 savedPosition 当且仅当 popstate 导航 (通过浏览器的 前进/后退 按钮触发) 时才可用。
@@ -55,7 +59,7 @@ const routers  = new Router({
     if (savedPosition) {
       return savedPosition
     }else{
-      // return { x: 0, y:0 }
+      return { x: 0, y:0 }
     }
   }
 });

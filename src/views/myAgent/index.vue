@@ -105,7 +105,10 @@
         mounted(){
             this.userAgentList(1)
             window.addEventListener('scroll',this.scrollTo)
-        }
+        },
+        destroyed(){
+            window.removeEventListener('scroll',this.scrollTo)
+        },
     }
 </script>
 <style scoped lang="scss">
@@ -155,8 +158,11 @@
                 }
                 td:last-child{
                     width: 34%;
-                    font-size: .1rem;
+                    font-size: .16rem;
                 }
+            }
+            tr:first-child td:last-child{
+                font-size: .24rem;
             }
         }
     }

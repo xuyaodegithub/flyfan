@@ -1,25 +1,25 @@
 <template>
     <div class="productList">
-        <div v-for="(item,idx) in dataList" :key="idx">
+        <div v-for="(item,idx) in dataList" :key="idx" @click="goDetail(item)">
             <div class="tit_top flex j-b a-i">
                 <div>
                     <img v-lazy="item.img" alt="">
-                    <span class="tit">{{item.title}}</span>
+                    <span class="tit">{{item.name}}</span>
                     <van-tag plain type="success">企业认证</van-tag>
                 </div>
                 <van-tag color="#f2826a" round >立即推荐</van-tag>
             </div>
             <div class="flex j-b a-i detial">
                 <div>
-                    <p>{{item.ed}}</p>
+                    <p>{{item.edqj}}</p>
                     <p>额度</p>
                 </div>
                 <div>
-                    <p>{{item.zd}}</p>
+                    <p>{{item.zdlv}}</p>
                     <p>最低利率</p>
                 </div>
                 <div>
-                    <p>{{item.qixian}}</p>
+                    <p>{{item.qx}}</p>
                     <p>期限</p>
                 </div>
             </div>
@@ -38,12 +38,12 @@
         data(){
             return {
                 dataList:[
-                    {title:'微业贷',img:'http://bank-mg.dachagui.com/statics/upload/4917/6934/6c8ae030be397ef0a0c1d75c9e9a45df.png',ed:'1w-300w',zd:'0.66%',qixian:'12-36月'},
-                    {title:'微业贷',img:'http://bank-mg.dachagui.com/statics/upload/4917/6934/6c8ae030be397ef0a0c1d75c9e9a45df.png',ed:'1w-300w',zd:'0.66%',qixian:'12-36月'},
-                    {title:'微业贷',img:'http://bank-mg.dachagui.com/statics/upload/4917/6934/6c8ae030be397ef0a0c1d75c9e9a45df.png',ed:'1w-300w',zd:'0.66%',qixian:'12-36月'},
-                    {title:'微业贷',img:'http://bank-mg.dachagui.com/statics/upload/4917/6934/6c8ae030be397ef0a0c1d75c9e9a45df.png',ed:'1w-300w',zd:'0.66%',qixian:'12-36月'},
-                    {title:'微业贷',img:'http://bank-mg.dachagui.com/statics/upload/4917/6934/6c8ae030be397ef0a0c1d75c9e9a45df.png',ed:'1w-300w',zd:'0.66%',qixian:'12-36月'},
-                    {title:'微业贷',img:'http://bank-mg.dachagui.com/statics/upload/4917/6934/6c8ae030be397ef0a0c1d75c9e9a45df.png',ed:'1w-300w',zd:'0.66%',qixian:'12-36月'},
+                    // {title:'微业贷',img:'http://bank-mg.dachagui.com/statics/upload/4917/6934/6c8ae030be397ef0a0c1d75c9e9a45df.png',ed:'1w-300w',zd:'0.66%',qixian:'12-36月'},
+                    // {title:'微业贷',img:'http://bank-mg.dachagui.com/statics/upload/4917/6934/6c8ae030be397ef0a0c1d75c9e9a45df.png',ed:'1w-300w',zd:'0.66%',qixian:'12-36月'},
+                    // {title:'微业贷',img:'http://bank-mg.dachagui.com/statics/upload/4917/6934/6c8ae030be397ef0a0c1d75c9e9a45df.png',ed:'1w-300w',zd:'0.66%',qixian:'12-36月'},
+                    // {title:'微业贷',img:'http://bank-mg.dachagui.com/statics/upload/4917/6934/6c8ae030be397ef0a0c1d75c9e9a45df.png',ed:'1w-300w',zd:'0.66%',qixian:'12-36月'},
+                    // {title:'微业贷',img:'http://bank-mg.dachagui.com/statics/upload/4917/6934/6c8ae030be397ef0a0c1d75c9e9a45df.png',ed:'1w-300w',zd:'0.66%',qixian:'12-36月'},
+                    // {title:'微业贷',img:'http://bank-mg.dachagui.com/statics/upload/4917/6934/6c8ae030be397ef0a0c1d75c9e9a45df.png',ed:'1w-300w',zd:'0.66%',qixian:'12-36月'},
                 ],
                 page:1,
                 rows:10
@@ -59,13 +59,16 @@
                     rows:this.rows
                 }
                 productList(data).then(res=>{
-
+                    if(!res.code)this.dataList=res.rows
                 })
+            },
+            goDetail(item){
+                this.$store.commit('SET_ITEM_MSG',item)
+                this.$router.push('/detial')
             }
         },
         mounted(){
-            console.log(this.stopScoll)
-            // this.initList()
+            this.initList()
         }
     }
 </script>

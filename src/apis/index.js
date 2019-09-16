@@ -5,11 +5,7 @@ import https from './request'
 /**
  * 首页
  **/
- export const indexData=data=> https.get('/index.php',data);
-/**
- * 产品列表
- **/
- export const productList=data=> https.get('/ajax/query/product',data);
+ export const indexData=data=> https.get('/product/hot',data);
 /**
  * 注册
  **/
@@ -30,7 +26,15 @@ import https from './request'
  *下款记录
  **/
  export const userRecord=data=> https.get('/user/water',data);
-
-
-
+ /**
+  * 产品模块开始
+  * **/
+/**
+ * 产品列表
+ **/
+export const productList=data=> https.get('/product/all',data);
+/**
+ * 产品大纲
+ **/
+export const productBg=data=> https.get('/product/cpdg',data);
 

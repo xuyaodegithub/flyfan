@@ -1,4 +1,4 @@
 const state={
-aaa:123
+itemMsg:{}
 }
 export default state

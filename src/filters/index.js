@@ -37,11 +37,6 @@ const index={
     return ''
   }
 },
-    Calculation(val){
-        let price=val.price
-        let creditsPerMonth=val.creditsPerMonth
-        return (price/creditsPerMonth).toFixed(2)
-    },
  getLastMonth(){
   var now=new Date();
   var year = now.getFullYear();//getYear()+1900=getFullYear()
@@ -84,10 +79,9 @@ const index={
             item instanceof Array ? toArr(item) : ret.push(item);
         });
     }
-
     toArr(arr);
-
     return ret;
-}
+},
+
 }
 export default index

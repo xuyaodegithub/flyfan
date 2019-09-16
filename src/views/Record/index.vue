@@ -100,6 +100,9 @@
                 }
             }
         },
+        destroyed(){
+            window.removeEventListener('scroll',this.scrollTo)
+        },
         mounted(){
             this.userRecordList(1)
             window.addEventListener('scroll',this.scrollTo)

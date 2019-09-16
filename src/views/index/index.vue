@@ -23,7 +23,7 @@
                 <img src="../../assets/images/icon_hot.png" alt="">
             </div>
             <div class="product">
-                <div v-for="(item,index) in productList" :key="index">
+                <div v-for="(item,index) in productList" :key="index" @click="goDetail(item)">
                     <div class="p_title flex j-b a-i">
                         <span>{{item.name}}</span>
                         <div>
@@ -50,7 +50,7 @@
                     </div>
                 </div>
             </div>
-            <div class="move">
+            <div class="move" @click="$router.push('/productList')">
                 更多优质产品 》
             </div>
         </div>
@@ -86,6 +86,9 @@
               stopScoll:false,
               dataloading:false
           }
+        },
+        destroyed(){
+            window.removeEventListener('scroll',this.initscroll)
         },
         mounted(){
             this.initData(1)
@@ -131,6 +134,10 @@
                     this.page+=1;
                     this.initData(2)
                 }
+            },
+            goDetail(item){
+                this.$store.commit('SET_ITEM_MSG',item)
+                this.$router.push('/detial')
             }
         }
     }

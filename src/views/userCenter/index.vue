@@ -15,15 +15,25 @@
                 <div class="jindu">查看升级进度</div>
             </div>
         </div>
-        <div class="list flex j-b a-i">
-            <div v-for="(item,index) in selfMoney" :key="index">
-                <p>{{userMsg[item.str]}}</p>
-                <p>{{item.title}}</p>
+        <div class="list">
+            <div class="flex a-i j-b month">
+                <div class="left">
+                    <h4>本月业绩</h4>
+                    <span>123元</span>
+                </div>
+                    <van-button round color="linear-gradient(to right, #fe7007, #fe4a0f)" sizes="small">查看详情</van-button>
             </div>
-            <div>
-                <!--<van-icon name="balance-pay" />-->
-                <img src="../../assets/images/my_packets.png" alt="">
-                <p>我的钱包</p>
+            <van-divider />
+            <div class=" flex j-b a-i">
+                <div v-for="(item,index) in selfMoney" :key="index">
+                    <p>{{userMsg[item.str]}}</p>
+                    <p>{{item.title}}</p>
+                </div>
+                <div>
+                    <!--<van-icon name="balance-pay" />-->
+                    <img src="../../assets/images/my_packets.png" alt="">
+                    <p>我的钱包</p>
+                </div>
             </div>
         </div>
         <div class="gnbtn">
@@ -57,7 +67,7 @@
 
 <script>
     // @ is an alias to /src
-    import { Icon , Toast, Grid, GridItem  } from 'vant';
+    import { Icon , Toast, Grid, GridItem, Button,Divider  } from 'vant';
     import back from '@/assets/images/header_bg1.png'
     import headerBack from '@/assets/images/banner.png'
     import { userInfo } from '@/apis/index'
@@ -109,6 +119,8 @@
             [Icon.name]:Icon,
             [Grid.name]:Grid,
             [GridItem.name]:GridItem,
+            [Button.name]:Button,
+            [Divider.name]:Divider ,
         },
         computed: {},
         methods: {},
@@ -121,6 +133,7 @@
 </script>
 <style scoped lang="scss">
     .user {
+        padding-bottom: 1.2rem;
         font-size: .32rem;
         color: #333;
         .userinfo {
@@ -189,6 +202,18 @@
             position: relative;
             margin-top: -.5rem;
             box-shadow: 0 0 .1rem #eee ;
+            .month{
+                padding:0 .25rem 0;
+                .left > span{
+                    display: inline-block;
+                    color: #e62c10;
+                    margin-top: .15rem;
+                }
+                .van-button{
+                    height: .6rem;
+                    line-height: .6rem;
+                }
+            }
             p:first-child{
                 color: #e62c10;
                 margin-bottom: .15rem;
