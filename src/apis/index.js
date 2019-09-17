@@ -7,6 +7,10 @@ import https from './request'
  **/
  export const indexData=data=> https.get('/product/hot',data);
 /**
+ * 首页公告
+ **/
+ export const indexNotice=data=> https.get('/notice/hot',data);
+/**
  * 注册
  **/
  export const userRegister=data=> https.post('/Reg/index',data);
@@ -33,6 +37,10 @@ import https from './request'
  * 产品列表
  **/
 export const productList=data=> https.get('/product/all',data);
+/**
+ * 产品详情
+ **/
+export const productDetial=data=> https.get('/product/detail',data);
 /**
  * 产品大纲
  **/

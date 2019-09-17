@@ -15,14 +15,14 @@
                 <div class="hasTitle">
                     <h4>申请条件</h4>
                     <van-divider />
-                    <div class="val" v-html="getCl(itemInfo.sqtj)">
+                    <div class="val" v-html="itemInfo.sqtj">
 
                     </div>
                 </div>
                 <div class="hasTitle">
                     <h4>所需材料</h4>
                     <van-divider />
-                    <div class="val" v-html="getCl(itemInfo.sxcl)">
+                    <div class="val" v-html="itemInfo.sxcl">
 
                     </div>
                 </div>
@@ -49,6 +49,7 @@
 <script>
     import { Tag,Divider,Icon,Overlay } from 'vant';
     import { mapGetters } from 'vuex'
+    import { productDetial } from '@/apis/index'
     export default {
         name: "productList",
         data(){
@@ -110,7 +111,10 @@
             }
         },
         computed:{
-            ...mapGetters(['itemMsg'])
+            ...mapGetters(['itemMsg']),
+            produId(){
+                return this.$route.query.id
+            }
         },
         components:{
             [Tag.name]:Tag,
@@ -124,10 +128,18 @@
             },
             getqrCode(){
                 this.show=true
+            },
+            getDetial(){
+                let data={
+                    id:this.produId
+                }
+                productDetial(data).then(res=>{
+                    if(!res.code)this.itemInfo=res.msg
+                })
             }
         },
         mounted(){
-            console.log(this.itemMsg)
+           this.getDetial()
         }
     }
 </script>

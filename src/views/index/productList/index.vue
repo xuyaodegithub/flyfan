@@ -5,7 +5,7 @@
                 <div>
                     <img v-lazy="item.img" alt="">
                     <span class="tit">{{item.name}}</span>
-                    <van-tag plain type="success">企业认证</van-tag>
+                    <van-tag plain type="success" v-if="item.rz==1">企业认证</van-tag>
                 </div>
                 <van-tag color="#f2826a" round >立即推荐</van-tag>
             </div>
@@ -64,7 +64,7 @@
             },
             goDetail(item){
                 this.$store.commit('SET_ITEM_MSG',item)
-                this.$router.push('/detial')
+                this.$router.push(`/detial?id=${item.id}`)
             }
         },
         mounted(){

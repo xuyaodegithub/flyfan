@@ -52,6 +52,34 @@ const routers  = new Router({
       path: '/detial',
       name: '商品详情',
       component: () => import(/* webpackChunkName: "productDetial" */ '../views/index/procuctDetial/index.vue')
+    },{
+      path: '/userWallet',
+      name: '我的钱包',
+      component: () => import(/* webpackChunkName: "userWallet" */ '../views/userCenter/userWallet/index.vue')
+    },{
+      path: '/userQr',
+      name: '推广二维码',
+      component: () => import(/* webpackChunkName: "userQr" */ '../views/userCenter/userQr/index.vue')
+    },{
+      path: '/userTeam',
+      name: '我的团队',
+      component: () => import(/* webpackChunkName: "userTeam" */ '../views/userCenter/userTeam/index.vue')
+    },{
+      path: '/userBank',
+      name: '我的银行卡',
+      component: () => import(/* webpackChunkName: "userBank" */ '../views/userCenter/userBank/index.vue')
+    },{
+      path: '/userCommission',
+      name: '我的佣金',
+      component: () => import(/* webpackChunkName: "userCommission" */ '../views/userCenter/userCommission/index.vue')
+    },{
+      path: '/userReward',
+      name: '拉新奖励',
+      component: () => import(/* webpackChunkName: "userReward" */ '../views/userCenter/userReward/index.vue')
+    },{
+      path: '/userMess',
+      name: '我的消息',
+      component: () => import(/* webpackChunkName: "userMess" */ '../views/userCenter/userMess/index.vue')
     },
   ],
   scrollBehavior (to, from, savedPosition) {//路由切换时滚轮位置//scrollBehavior 方法接收 to 和 from 路由对象。第三个参数 savedPosition 当且仅当 popstate 导航 (通过浏览器的 前进/后退 按钮触发) 时才可用。

@@ -19,7 +19,7 @@
             <div class="flex a-i j-b month">
                 <div class="left">
                     <h4>本月业绩</h4>
-                    <span>123元</span>
+                    <span>{{userMsg.byyj}}</span>
                 </div>
                     <van-button round color="linear-gradient(to right, #fe7007, #fe4a0f)" sizes="small">查看详情</van-button>
             </div>
@@ -29,7 +29,7 @@
                     <p>{{userMsg[item.str]}}</p>
                     <p>{{item.title}}</p>
                 </div>
-                <div>
+                <div @click="$router.push('/userWallet')">
                     <!--<van-icon name="balance-pay" />-->
                     <img src="../../assets/images/my_packets.png" alt="">
                     <p>我的钱包</p>
@@ -41,6 +41,7 @@
             <div class="server">
                 <van-grid :column-num="3">
                     <van-grid-item
+                            @click="choseUserServer(item)"
                             v-for="(item,index) in server"
                             :key="index"
                     >
@@ -99,12 +100,12 @@
                     {title:'已提',str:'yitiye'},
                 ],
                 server:[
-                    {title:'推广二维码',img:s1},
-                    {title:'我的团队',img:s2},
-                    {title:'我的银行卡',img:s3},
-                    {title:'我的佣金',img:s4},
-                    {title:'拉新奖励',img:s5},
-                    {title:'我的消息',img:s6},
+                    {title:'推广二维码',img:s1,url:'/userQr'},
+                    {title:'我的团队',img:s2,url:'/userTeam'},
+                    {title:'我的银行卡',img:s3,url:'/userBank'},
+                    {title:'我的佣金',img:s4,url:'/userCommission'},
+                    {title:'拉新奖励',img:s5,url:'/userReward'},
+                    {title:'我的消息',img:s6,url:'/userMess'},
                 ],
                 pserver:[
                     {title:'佣金表',img:s21},
@@ -123,7 +124,11 @@
             [Divider.name]:Divider ,
         },
         computed: {},
-        methods: {},
+        methods: {
+            choseUserServer(item){
+                this.$router.push(item.url)
+            }
+        },
         mounted(){
             userInfo().then(res=>{
                 if(!res.code)this.userMsg=res.msg

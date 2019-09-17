@@ -1,6 +1,6 @@
 <template>
     <div class="dg flex a-i">
-        <div v-for="(item,idx) in dataList" :key="item.id">
+        <div v-for="(item,idx) in dataList" :key="item.id" @click="godgDetial(item)">
             <img v-lazy="item.img" alt="">
             <p>{{item.name}}</p>
         </div>
@@ -23,6 +23,9 @@
                 productBg().then(res=>{
                     if(!res.code)this.dataList=res.rows
                 })
+            },
+            godgDetial(item){
+                window.location.href=item.about
             }
         },
         mounted(){

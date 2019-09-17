@@ -2,12 +2,12 @@
     <div class="home">
         <van-swipe :autoplay="4000">
             <van-swipe-item v-for="(image, index) in images" :key="index">
-                <img v-lazy="image" />
+                <img :src="image.img" />
             </van-swipe-item>
         </van-swipe>
         <van-notice-bar
                 scrollable
-                :text="msg"
+                :text="notice.title"
                 left-icon="volume-o"
         />
         <div class="flex a-i btns">
@@ -64,16 +64,14 @@
     import hot2 from '@/assets/images/hot2.png'
     import hot3 from '@/assets/images/hot3.png'
     import hot4 from '@/assets/images/hot4.png'
-    import { indexData } from '@/apis/index'
+    import { indexData, indexNotice } from '@/apis/index'
     export default {
         name: 'index',
         data(){
           return {
               images: [
-                  'http://bank-marking-sale.dachagui.com/statics/loan_new/images/index/banner2.jpg',
-                  'http://bank-marking-sale.dachagui.com/statics/loan_new/images/index/banner1.png'
+
               ],
-              msg:'公告：百万现金奖励，5%超高三级返佣超高三级返佣',
               btns:[
                   {title:'产品列表',img:hot1,url:'/productList'},
                   {title:'产品大纲',img:hot2,url:'/productOutline'},
@@ -84,7 +82,9 @@
               page:1,
               rows:10,
               stopScoll:false,
-              dataloading:false
+              dataloading:false,
+              notice:{},
+
           }
         },
         destroyed(){
@@ -92,6 +92,7 @@
         },
         mounted(){
             this.initData(1)
+            this.initNotice()
             window.addEventListener('scroll',this.initscroll)
             // console.log(this.$wx)
         },
@@ -108,6 +109,14 @@
         methods:{
             toPage(val){
                 this.$router.push(val.url)
+            },
+            initNotice(){
+                indexNotice().then(res=>{
+                    const notice=res.rows
+                    notice.map(item=>{
+                        item.type==2 ? this.images.push(item) : this.notice=item
+                    })
+                })
             },
             initData(key){
                 this.dataloading=true;
@@ -137,7 +146,7 @@
             },
             goDetail(item){
                 this.$store.commit('SET_ITEM_MSG',item)
-                this.$router.push('/detial')
+                this.$router.push(`/detial?id=${item.id}`)
             }
         }
     }

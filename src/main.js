@@ -13,8 +13,8 @@ import jsdk from 'weixin-js-sdk';
 Vue.use(VueLazyload);
 Vue.use(VueLazyload, {
   preLoad: 1.3,
-  error: './assets/images/logo.png',
-  loading: './assets/images/logo.png',
+  error: './static/logo.png',
+  loading: './static/logo.png',
   attempt: 3
 });
 
