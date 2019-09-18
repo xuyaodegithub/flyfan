@@ -3,14 +3,14 @@
         <div class="flex j-b userinfo a-i" :style="{background: `url(${headerBack}) no-repeat center`}">
             <div class="flex a-i relat">
                 <div class="logo flex a-i">
-                    <img :src="userMsg.headimg ? userMsg.headimg : 'http://thirdwx.qlogo.cn/mmopen/PiajxSqBRaEIXlLl85lF4fzgzCicZBbRJxHVvoxNrCzO80xoKhuicT4g88FNbJVQIZDkekqLK5s6cweLhDSrLJQ5g/132'"
+                    <img :src="userInfoResult.headimg ? userInfoResult.headimg : 'http://thirdwx.qlogo.cn/mmopen/PiajxSqBRaEIXlLl85lF4fzgzCicZBbRJxHVvoxNrCzO80xoKhuicT4g88FNbJVQIZDkekqLK5s6cweLhDSrLJQ5g/132'"
                          alt="">
                     <img src="../../assets/images/header_border1.png" alt="">
                 </div>
                 <div class="name">
-                    <p>{{userMsg.username}}</p>
-                    <p :style="backstyle">{{userMsg.vipdesc}}</p>
-                    <p>推广码：{{userMsg.tgm}}</p>
+                    <p>{{userInfoResult.username}}</p>
+                    <p :style="backstyle">{{userInfoResult.vipdesc}}</p>
+                    <p>推广码：{{userInfoResult.tgm}}</p>
                 </div>
                 <div class="jindu">查看升级进度</div>
             </div>
@@ -19,14 +19,14 @@
             <div class="flex a-i j-b month">
                 <div class="left">
                     <h4>本月业绩</h4>
-                    <span>{{userMsg.byyj}}</span>
+                    <span>{{userInfoResult.byyj}}</span>
                 </div>
                     <van-button round color="linear-gradient(to right, #fe7007, #fe4a0f)" sizes="small">查看详情</van-button>
             </div>
             <van-divider />
             <div class=" flex j-b a-i">
                 <div v-for="(item,index) in selfMoney" :key="index">
-                    <p>{{userMsg[item.str]}}</p>
+                    <p>{{userInfoResult[item.str]}}</p>
                     <p>{{item.title}}</p>
                 </div>
                 <div @click="$router.push('/userWallet')">
@@ -69,9 +69,9 @@
 <script>
     // @ is an alias to /src
     import { Icon , Toast, Grid, GridItem, Button,Divider  } from 'vant';
+    import { mapGetters, mapActions } from 'vuex'
     import back from '@/assets/images/header_bg1.png'
     import headerBack from '@/assets/images/banner.png'
-    import { userInfo } from '@/apis/index'
     import s1 from '@/assets/images/server1.png'
     import s2 from '@/assets/images/server2.png'
     import s3 from '@/assets/images/server3.png'
@@ -87,7 +87,6 @@
         name: 'userCenter',
         data() {
             return {
-                userMsg:{},
                 headerBack,
                 backstyle: {
                     backgroundImage: `url(${back})`,
@@ -123,16 +122,17 @@
             [Button.name]:Button,
             [Divider.name]:Divider ,
         },
-        computed: {},
+        computed: {
+            ...mapGetters(['userInfoResult'])
+        },
         methods: {
+            ...mapActions(['userInfoAction']),
             choseUserServer(item){
                 this.$router.push(item.url)
             }
         },
         mounted(){
-            userInfo().then(res=>{
-                if(!res.code)this.userMsg=res.msg
-            })
+         this.userInfoAction()
         }
     }
 </script>

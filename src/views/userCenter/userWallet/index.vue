@@ -2,16 +2,16 @@
         <div class="userWallet">
             <div class="yellow">
                 <div class="top">
-                    <span>0</span>元
+                    <span>{{userInfoResult.zhhuye}}</span>元
                     <p>可提现金额</p>
                 </div>
                 <div class="flex a-i">
                   <div class="left">
-                      <p><span>0.00</span>元</p>
+                      <p><span>{{userInfoResult.kngzye}}</span>元</p>
                       <p>审核中金额</p>
                   </div>
                   <div class="right">
-                      <p><span>0.00</span>元</p>
+                      <p><span>{{userInfoResult.yitiye}}</span>元</p>
                       <p>已提现金额</p>
                   </div>
                 </div>
@@ -28,6 +28,7 @@
 
 <script>
     import {Button, Toast  } from 'vant';
+    import { mapGetters, mapActions } from 'vuex'
     export default {
         name: "index",
         data(){
@@ -38,6 +39,9 @@
         components:{
             [Button.name]:Button,
             [Toast.name]:Toast,
+        },
+        computed:{
+            ...mapGetters(['userInfoResult'])
         }
     }
 </script>

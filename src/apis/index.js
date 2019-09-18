@@ -42,6 +42,10 @@ export const productList=data=> https.get('/product/all',data);
  **/
 export const productDetial=data=> https.get('/product/detail',data);
 /**
+ * 推荐贷款
+ **/
+export const productQr=data=> https.get('/product/tjdk',data);
+/**
  * 产品大纲
  **/
 export const productBg=data=> https.get('/product/cpdg',data);

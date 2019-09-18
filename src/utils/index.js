@@ -114,5 +114,43 @@ export const overTime=(val,num) =>{
 export const JudgmentType=(val)=>{
   return Object.prototype.toString.call(val).split(' ')[1].split(']')[0]
 }
-
-
+export const BrowserInfo = {//目前主要支持 安卓 & 苹果 & ipad & 微信 & 支付宝 & 是否是手机端。
+    isAndroid: Boolean(navigator.userAgent.match(/android/ig)),
+    isIphone: Boolean(navigator.userAgent.match(/iphone|ipod/ig)),
+    isIpad: Boolean(navigator.userAgent.match(/ipad/ig)),
+    isWeixin: Boolean(navigator.userAgent.match(/MicroMessenger/ig)),
+    isAli: Boolean(navigator.userAgent.match(/AlipayClient/ig)),
+    isPhone: Boolean(/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent))
+}
+//canvas画文本自动换行原型方法
+export const setCanvasText=()=>{
+    CanvasRenderingContext2D.prototype.wrapText = function (text, x, y, maxWidth, lineHeight) {
+        if (typeof text != 'string' || typeof x != 'number' || typeof y != 'number') {
+            return;
+        }
+        var context = this;
+        var canvas = context.canvas;
+        if (typeof maxWidth == 'undefined') {
+            maxWidth = (canvas && canvas.width) || 300;
+        }
+        if (typeof lineHeight == 'undefined') {
+            lineHeight = (canvas && parseInt(window.getComputedStyle(canvas).lineHeight)) || parseInt(window.getComputedStyle(document.body).lineHeight);
+        }
+        // 字符分隔为数组
+        var arrText = text.split('');
+        var line = '';
+        for (var n = 0; n < arrText.length; n++) {
+            var testLine = line + arrText[n];
+            var metrics = context.measureText(testLine);
+            var testWidth = metrics.width;
+            if (testWidth > maxWidth && n > 0) {
+                context.fillText(line, x, y);
+                line = arrText[n];
+                y += lineHeight;
+            } else {
+                line = testLine;
+            }
+        }
+        context.fillText(line, x, y);
+    };
+}

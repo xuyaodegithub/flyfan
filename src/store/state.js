@@ -1,4 +1,5 @@
 const state={
-itemMsg:{}
+    itemMsg:{},
+    userInfo:{}
 }
 export default state
