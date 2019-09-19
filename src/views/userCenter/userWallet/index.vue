@@ -20,8 +20,8 @@
                 <van-button :color="btnOpen ? '#fe7007' : '#ccc'" round>提现</van-button>
             </div>
             <div class="otherBtn flex j-b">
-                <van-button color="#fe6d68" plain size="small">收人明细</van-button>
-                <van-button color="#fe6d68" plain  size="small">提现明细</van-button>
+                <van-button color="#fe6d68" plain size="small" @click="details('/Income_details')">收人明细</van-button>
+                <van-button color="#fe6d68" plain  size="small" @click="details('/Presentation_details')">提现明细</van-button>
             </div>
         </div>
 </template>
@@ -42,6 +42,11 @@
         },
         computed:{
             ...mapGetters(['userInfoResult'])
+        },
+        methods:{
+            details(url){
+               this.$router.push(url)
+            }
         }
     }
 </script>

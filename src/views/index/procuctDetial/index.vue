@@ -133,7 +133,7 @@
                 return val.replace(/↵/g,'\<br\>')
             },
             getqrCode(){
-                this.show=true
+                this.show=true;
                 if(this.qrcodemsg)return;
                 let data={
                     id:this.produId

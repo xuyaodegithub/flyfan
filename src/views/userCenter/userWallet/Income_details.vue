@@ -1,23 +1,21 @@
 <template>
-        <div class="qr">
-            <img :src="img" alt="">
+        <div class="Income_details">
+            收入明细
         </div>
 </template>
 
 <script>
-    import img from '../../../assets/images/qr.png'
     export default {
-        name: "index",
+        name: "Income_details",
         data(){
             return {
-                img
             }
         }
     }
 </script>
 
 <style scoped lang="scss">
- .qr{
+ .Income_details{
      img{
          display: block;
      }

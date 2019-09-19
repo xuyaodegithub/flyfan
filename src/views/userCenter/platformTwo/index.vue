@@ -1,23 +1,21 @@
 <template>
-        <div class="qr">
-            <img :src="img" alt="">
+        <div class="platformTwo">
+            新手须知
         </div>
 </template>
 
 <script>
-    import img from '../../../assets/images/qr.png'
     export default {
         name: "index",
         data(){
             return {
-                img
             }
         }
     }
 </script>
 
 <style scoped lang="scss">
- .qr{
+ .platformTwo{
      img{
          display: block;
      }

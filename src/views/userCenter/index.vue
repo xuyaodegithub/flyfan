@@ -54,6 +54,7 @@
             <div class="server">
                 <van-grid :column-num="3">
                     <van-grid-item
+                            @click="choseUserServer(item)"
                             v-for="(item,index) in pserver"
                             :key="index"
                     >
@@ -107,11 +108,11 @@
                     {title:'我的消息',img:s6,url:'/userMess'},
                 ],
                 pserver:[
-                    {title:'佣金表',img:s21},
-                    {title:'新手须知',img:s22},
-                    {title:'意见反馈',img:s23},
-                    {title:'修改密码',img:s24},
-                    {title:'退出',img:s25},
+                    {title:'佣金表',img:s21,url:'/returnTable'},
+                    {title:'新手须知',img:s22,url:'/platformTwo'},
+                    {title:'意见反馈',img:s23,url:'/platformThree'},
+                    {title:'修改密码',img:s24,url:'/platformFour'},
+                    {title:'退出',img:s25,url:''},
                 ]
             }
         },
@@ -128,7 +129,8 @@
         methods: {
             ...mapActions(['userInfoAction']),
             choseUserServer(item){
-                this.$router.push(item.url)
+                if(item.url)this.$router.push(item.url)
+
             }
         },
         mounted(){

@@ -57,6 +57,14 @@ const routers  = new Router({
       name: '我的钱包',
       component: () => import(/* webpackChunkName: "userWallet" */ '../views/userCenter/userWallet/index.vue')
     },{
+      path: '/Income_details',
+      name: '收入明细',
+      component: () => import(/* webpackChunkName: "userWallet" */ '../views/userCenter/userWallet/Income_details.vue')
+    },{
+      path: '/Presentation_details',
+      name: '提现明细',
+      component: () => import(/* webpackChunkName: "userWallet" */ '../views/userCenter/userWallet/Presentation_details.vue')
+    },{
       path: '/userQr',
       name: '推广二维码',
       component: () => import(/* webpackChunkName: "userQr" */ '../views/userCenter/userQr/index.vue')
@@ -80,6 +88,22 @@ const routers  = new Router({
       path: '/userMess',
       name: '我的消息',
       component: () => import(/* webpackChunkName: "userMess" */ '../views/userCenter/userMess/index.vue')
+    },{
+      path: '/bindBankCard',
+      name: '绑定银行卡',
+      component: () => import(/* webpackChunkName: "bindBankCard" */ '../views/userCenter/bindBankCard/index.vue')
+    },{
+      path: '/platformTwo',
+      name: '新手须知',
+      component: () => import(/* webpackChunkName: "platformTwo" */ '../views/userCenter/platformTwo/index.vue')
+    },{
+      path: '/platformThree',
+      name: '意见反馈',
+      component: () => import(/* webpackChunkName: "platformThree" */ '../views/userCenter/platformThree/index.vue')
+    },{
+      path: '/platformFour',
+      name: '修改密码',
+      component: () => import(/* webpackChunkName: "platformFour" */ '../views/userCenter/platformFour/index.vue')
     },
   ],
   scrollBehavior (to, from, savedPosition) {//路由切换时滚轮位置//scrollBehavior 方法接收 to 和 from 路由对象。第三个参数 savedPosition 当且仅当 popstate 导航 (通过浏览器的 前进/后退 按钮触发) 时才可用。
