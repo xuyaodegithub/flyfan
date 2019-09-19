@@ -7,8 +7,9 @@
                     show-cancel-button
                     confirm-button-color="#ffa012"
                     close-on-popstate
-                    @confirm="toSure()"
-                    @cancel="show=false"
+                    close-on-click-overlay
+                    cancel-button-text="重置"
+                    :before-close="beforeClose"
             >
                 <div class="dialogs">
                     <p>佣金来源：</p>
@@ -66,8 +67,16 @@
             [Divider.name]:Divider,
         },
         methods:{
-            toSure(){
-                console.log(this.firstBtn,this.secBtn)
+            beforeClose(action,done){
+               if(action==='confirm'){
+                   console.log(this.firstBtn,this.secBtn)
+                   done()
+               }else if(action==='overlay') done()
+               else{
+                   this.firstBtn='';
+                   this.secBtn='';
+                   done(false)
+               }
             }
         }
     }
@@ -78,6 +87,10 @@
     padding: .2rem 0 0 0;
      .dialogs{
          padding:.5rem .3rem;
+         .van-button{
+             border: 1px solid #ada7a7;
+             border-radius: .3rem;
+         }
          p{
              font-size: .28rem;
              line-height: .48rem;
