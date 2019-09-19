@@ -45,12 +45,21 @@
             <div class="wat">
                 注意事项：佣金将直接发放到您的借记卡上，请确保卡号等信息准确无误：
             </div>
-            <van-button color="linear-gradient(to right, #ff9a67, #ff645f)" round>绑定银行卡</van-button>
+            <van-dialog
+                    v-model="show"
+                    title="请输入短信验证码"
+                    confirm-button-color="#ffa012"
+            >
+                <div class="filed">
+                    <van-field v-model="value" placeholder="请输入用户名" />
+                </div>
+            </van-dialog>
+            <van-button color="linear-gradient(to right, #ff9a67, #ff645f)" round @click="pouppA()">绑定银行卡</van-button>
         </div>
 </template>
 
 <script>
-    import { CellGroup, Cell, Field, Button, Toast  } from 'vant';
+    import { CellGroup, Cell, Field, Button, Toast, Dialog  } from 'vant';
     export default {
         name: "index",
         data(){
@@ -60,6 +69,8 @@
                 cardNum:'',
                 phone:'',
                 yzmNum:'',
+                show:false,
+                value:''
             }
         },
         components:{
@@ -67,8 +78,13 @@
             [Cell.name]:Cell,
             [Field.name]:Field,
             [Button.name]:Button,
+            [Dialog.Component.name]:Dialog.Component,
         },
-        methods:{},
+        methods:{
+            pouppA(){
+                this.show=true
+            }
+        },
         mounted(){
 
         }
@@ -94,6 +110,17 @@
          width: 65%;
          display: block;
          margin: 1rem auto 0;
+     }
+     .filed{
+         width: 60%;
+         margin: 0.3rem auto;
+         border: 1px solid #ebedf0;
+         border-radius: .34rem;
+         overflow: hidden;
+
+         .van-cell {
+             padding: 5px 16px;
+         }
      }
  }
 </style>

@@ -1,5 +1,8 @@
-.login .van-field__left-icon,.register .van-field__left-icon{
+.login .van-field__left-icon,.register .van-field__left-icon,.platformFour .van-field__left-icon{
     margin-right: .2rem;
+    color: #fe4a0f;
+}
+.platformFour .active .van-field__right-icon{
     color: #fe4a0f;
 }
 .login .van-button,.register .input > .van-button{

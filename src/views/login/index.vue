@@ -8,8 +8,8 @@
             </van-cell-group>
             <van-button color="#fe4a0f" @click="login()">登录</van-button>
             <div class="flex j-b a-i">
-                <span @click="goresgister(1)">立即注册</span>
-                <span @click="goresgister(2)">忘记密码</span>
+                <span @click="goresgister()">立即注册</span>
+                <span @click="goresgister(1)">忘记密码</span>
             </div>
         </div>
         <p class="fei">飞侠君</p>
@@ -39,7 +39,8 @@
         },
         methods:{
             goresgister(key){
-                this.$router.push(`/register?type=${key}`)
+                let url=key ? `/register?type=${key}` : '/register'
+                this.$router.push(url)
             },
             login(){
                 let data={

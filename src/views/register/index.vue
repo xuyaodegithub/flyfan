@@ -3,7 +3,7 @@
         <img src="../../assets/images/login.png" alt="">
         <div class="input">
             <van-cell-group>
-                <van-field v-model="name" placeholder="请输入经理人姓名" :border="false" left-icon="manager" v-if="type==1"/>
+                <van-field v-model="name" placeholder="请输入经理人姓名" :border="false" left-icon="manager" v-if="!type"/>
                 <van-field
                         v-model="phone"
                         center
@@ -17,12 +17,12 @@
                 <van-field v-model="pass" placeholder="请输入8-32位 包含数字字母的密码" type="password" :border="false"
                            left-icon="closed-eye"/>
                 <van-field v-model="tjm" placeholder="请输入推荐码（非必填）" type="number" :border="false" left-icon="invition"
-                           v-if="type==1"/>
+                           v-if="!type && !peopleId"/>
                 <van-field v-model="partpass" placeholder="请再次输入密码" type="password" :border="false" left-icon="invition"
-                           v-if="type==2"/>
+                           v-if="type"/>
             </van-cell-group>
-            <van-button color="#fe4a0f" @click="confire()">{{type==1 ? '立即注册' : '设置新密码'}}</van-button>
-            <div class="xy" v-if="type==1">
+            <van-button color="#fe4a0f" @click="confire()">{{type ? '立即注册' : '设置新密码'}}</van-button>
+            <div class="xy" v-if="!type">
                 <van-checkbox v-model="checked" icon-size="0.3rem" checked-color="#fe4a0f">我已阅读并同意<span>《注册协议》</span>
                 </van-checkbox>
             </div>
@@ -59,6 +59,9 @@
         computed: {
             type() {
                 return this.$route.query.type
+            },
+            peopleId(){
+                return this.$route.query.id
             }
         },
         methods: {
@@ -67,13 +70,13 @@
                     Toast('手机号输入有误');
                     return
                 }
-                if (this.type === '1') {
+                if (!this.type) {
                     let data = {
                         username: this.name,
                         phone: this.phone,
                         password: this.pass,
                         phonerandcode: this.yzm,
-                        pid: this.tjm
+                        pid: this.peopleId ? this.peopleId : this.tjm
                     };
                     if (!this.name || !this.pass || !this.yzm) {
                         Toast('请先完善信息');
@@ -97,7 +100,7 @@
             }
         },
         mounted() {
-
+            console.log(Boolean(this.type))
         }
     }
 </script>

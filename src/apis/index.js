@@ -49,4 +49,10 @@ export const productQr=data=> https.get('/product/tjdk',data);
  * 产品大纲
  **/
 export const productBg=data=> https.get('/product/cpdg',data);
-
+/**
+* 个人中心
+* */
+/**
+ * 推广二维码
+ **/
+export const userPutQr=data=> https.get('/user/ewm',data);

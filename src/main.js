@@ -8,6 +8,7 @@ import filters from './filters'
 import VueLazyload from 'vue-lazyload'
 import './assets/iconfont/iconfont.css'
 import jsdk from 'weixin-js-sdk';
+import { Toast } from 'vant'
 
 
 Vue.use(VueLazyload);
@@ -18,7 +19,7 @@ Vue.use(VueLazyload, {
   attempt: 3
 });
 
-
+Vue.prototype.$toast=Toast
 Vue.config.productionTip = false;
 Vue.prototype.$wx=jsdk
 Object.keys(filters).map(v=>{
