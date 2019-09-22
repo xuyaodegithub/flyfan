@@ -56,3 +56,7 @@ export const productBg=data=> https.get('/product/cpdg',data);
  * 推广二维码
  **/
 export const userPutQr=data=> https.get('/user/ewm',data);
+/**
+ * 退出
+ **/
+export const userLogout=data=> https.get('/login/logout',data);

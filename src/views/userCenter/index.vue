@@ -69,7 +69,7 @@
 
 <script>
     // @ is an alias to /src
-    import { Icon , Toast, Grid, GridItem, Button,Divider  } from 'vant';
+    import { Icon , Toast, Grid, GridItem, Button,Divider,Dialog  } from 'vant';
     import { mapGetters, mapActions } from 'vuex'
     import back from '@/assets/images/header_bg1.png'
     import headerBack from '@/assets/images/banner.png'
@@ -84,6 +84,7 @@
     import s23 from '@/assets/images/server23.png'
     import s24 from '@/assets/images/server24.png'
     import s25 from '@/assets/images/server25.png'
+    import { userLogout } from '@/apis/index'
     export default {
         name: 'userCenter',
         data() {
@@ -122,6 +123,7 @@
             [GridItem.name]:GridItem,
             [Button.name]:Button,
             [Divider.name]:Divider ,
+            [Dialog .name]:Dialog  ,
         },
         computed: {
             ...mapGetters(['userInfoResult'])
@@ -130,6 +132,20 @@
             ...mapActions(['userInfoAction']),
             choseUserServer(item){
                 if(item.url)this.$router.push(item.url)
+                else{
+                    Dialog.confirm({
+                        title: '提示',
+                        message: '确认要退出么？',
+                        confirmButtonColor:'#fe7007'
+                    }).then(() => {
+                        userLogout().then(res=>{
+                            if(!res.code)this.$router.replace('/login')
+                        })
+                    }).catch(() => {
+                        // on cancel
+                    });
+
+                }
 
             }
         },
