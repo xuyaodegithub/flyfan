@@ -2,7 +2,7 @@
         <div class="userTeam">
             <div class="flex j-b a-i tab">
                 <div :class="{'active' : type===idx}" @click="changeTab(item,idx)" v-for="(item,idx) in tabs" :key="idx">
-                    <p>{{item.tyep===2 ? '一级经理人' : '二级经理人'}}</p>
+                    <p>{{item.tyep===1 ? '一级经理人' : '二级经理人'}}</p>
                     <p>人数：{{item.num}}</p>
                     <p>带来佣金：{{item.money}}</p>
                     <van-icon name="checked" v-if="type===idx" />
@@ -70,14 +70,14 @@
             },
             initHeadData(){
                 this.tabs=[
-                     {tyep:2,num:this.userInfoResult.son1,money:this.userInfoResult.yj1},
-                     {tyep:3,num:this.userInfoResult.son2,money:this.userInfoResult.yj2},
+                     {tyep:1,num:this.userInfoResult.son1,money:this.userInfoResult.yj1},
+                     {tyep:2,num:this.userInfoResult.son2,money:this.userInfoResult.yj2},
                 ]
             },
             initTableData(k){
                 this.dataloading=true;
                 let data={
-                    depth:this.type ? 3 : 2,
+                    depth:this.type ? 2 : 1,
                     page:this.page,
                     rows:this.rows,
                 }

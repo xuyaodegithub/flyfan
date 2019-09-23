@@ -67,7 +67,12 @@ export const userFeedback=data=> https.post('/user/yjfk',data);
 /**
  * 绑定银行卡
  **/
-export const userBindCard=data=> https.post('/user/yjfk',data);
+export const userBindCard=data=> https.post('/user/yhk',data);
+/**
+ * 银行卡解绑
+ **/
+export const userCancelBank=data=> https.post('/user/yhkjb',data);
+
 /**
  * 我的消息
  **/
@@ -76,3 +81,11 @@ export const userNews=data=> https.get('/user/msg',data);
  * 修改密码
  **/
 export const userChangePass=data=> https.post('/user/changepwd',data);
+/**
+ * 佣金明细
+ **/
+export const userDetailCom=data=> https.get('/user/yjmx',data);
+/**
+ * 根据phone获取用户信息
+ **/
+export const shareUserInfo=data=> https.post('/product/shareuser',data);

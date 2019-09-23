@@ -1,19 +1,19 @@
 <template>
     <div class="agent">
         <van-tabs v-model="activeName"  type="card"  @change="changTab" sticky color="#fe4a0f">
-            <van-tab title="自身" name="1"></van-tab>
-            <van-tab title="一" name="2"></van-tab>
-            <van-tab title="二" name="3"></van-tab>
-            <van-tab title="三" name="4"></van-tab>
-            <van-tab title="四" name="5"></van-tab>
-            <van-tab title="..." name="6"></van-tab>
+            <van-tab title="自身" name="0"></van-tab>
+            <van-tab title="一" name="1"></van-tab>
+            <van-tab title="二" name="2"></van-tab>
+            <van-tab title="三" name="3"></van-tab>
+            <van-tab title="四" name="4"></van-tab>
+            <van-tab title="..." name="5"></van-tab>
         </van-tabs>
         <div class="a_title">
             <div class="a_tags j-b flex">
                 <span>级别</span><span>人数</span><span>战绩</span>
             </div>
             <div class="flex a_val j-b">
-                <span>{{+activeName-1}}</span><span>{{allpeople}}</span><span>{{allprice}}</span>
+                <span>{{+activeName}}</span><span>{{allpeople}}</span><span>{{allprice}}</span>
             </div>
         </div>
         <div class="tables">
@@ -48,7 +48,7 @@
         name: 'Extension',
         data(){
           return {
-              activeName:'1',
+              activeName:'0',
               dataList:[],
               page:1,
               rows:10,

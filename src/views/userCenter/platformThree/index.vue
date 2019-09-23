@@ -31,12 +31,15 @@
                     return
                 }
                 let data = {
-                    Content: this.value
+                    content: this.value
                 }
                 userFeedback( data ).then( res => {
                     if (!res.code) {
                         this.$toast( {message: '提交成功', duration: 1500} )
-                        this.$router.go( -1 )
+                        const _self=this
+                        setTimeout(()=>{
+                            _self.$router.go(-1)
+                        },1500)
                     }
                 } )
             }

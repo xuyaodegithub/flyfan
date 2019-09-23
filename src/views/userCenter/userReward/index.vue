@@ -31,8 +31,10 @@
 
 <script>
     import { Button, Toast, Dialog, Cell, Divider } from 'vant';
+    import minixs from '@/minixs'
     export default {
         name: "index",
+        mixins:[minixs],
         data(){
             return {
                 show:false,

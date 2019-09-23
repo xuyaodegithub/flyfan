@@ -131,7 +131,11 @@
         methods: {
             ...mapActions(['userInfoAction']),
             choseUserServer(item){
-                if(item.url)this.$router.push(item.url)
+                if(item.url==='/userBank' && !this.userInfoResult.yhk){
+                   this.$router.push('/bindBankCard')
+                    return
+                }
+                if(item.url)this.$router.push(item.url);
                 else{
                     Dialog.confirm({
                         title: '提示',

@@ -2,8 +2,8 @@
         <div class="userBank">
             <h4>已绑定的银行卡，佣金（如有）将发放到该银行卡上：</h4>
            <div class="card">
-               <div>姓名：许耀</div>
-               <div>银行卡号：622203******3229423</div>
+               <div>姓名：{{userInfoResult.name}}</div>
+               <div>银行卡号：{{userInfoResult.yhk | bankFilter}}<!--622203******3229423--></div>
                <van-divider />
                <p>工商银行</p>
            </div>
@@ -13,12 +13,17 @@
 
 <script>
     import { Divider, Button,Dialog } from 'vant'
+    import { mapGetters, mapActions } from 'vuex'
+    import { userCancelBank } from '@/apis'
     export default {
         name: "index",
         data(){
             return {
 
             }
+        },
+        computed:{
+            ...mapGetters(['userInfoResult'])
         },
         components:{
             [Divider.name]:Divider,
@@ -28,15 +33,29 @@
             cancleCard(){
                 Dialog.confirm({
                     title: '提示',
-                    message: '解绑银行卡后,您将无法将账户余额（如有）提现到银行卡。'
+                    message: '解绑银行卡后,您将无法将账户余额（如有）提现到银行卡。',
+                    confirmButtonColor:'#fe7007'
                 }).then(() => {
-                    this.$toast('解绑成功')
+                    userCancelBank().then(res=>{
+                        if(!res.code){
+                            this.$toast({message:'解绑成功',duration:1500})
+                            const _self=this
+                            setTimeout(()=>{
+                                _self.$router.go(-1)
+                            },1500)
+                        }
+                    })
                     // on confirm
                 }).catch(() => {
-                    this.$toast('已取消')
                     // on cancel
                 });
+            },
+            initBankData(){
+
             }
+        },
+        mounted(){
+
         }
     }
 </script>

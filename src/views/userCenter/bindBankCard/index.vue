@@ -4,7 +4,6 @@
                 <van-field
                         v-model="username"
                         label-width="120"
-                        clearable
                         label="姓名"
                         placeholder="请输入您的姓名"
                         @click-right-icon="$toast('question')"
@@ -33,14 +32,16 @@
                         placeholder="请输入银行预留手机号"
                         label-width="120"
                 />
-                <van-field
-                        v-model="yzmNum"
-                        type="text"
-                        clearable
-                        label="图像验证码"
-                        placeholder="请输入图像验证码"
-                        label-width="120"
-                />
+                <!--<van-field-->
+                        <!--v-model="yzmNum"-->
+                        <!--type="text"-->
+                        <!--center-->
+                        <!--label="图像验证码"-->
+                        <!--placeholder="请输入图像验证码"-->
+                        <!--label-width="120"-->
+                <!--&gt;-->
+                    <!--<img src="../../../assets/images/verify.png" slot="button" alt="" class="slotImg">-->
+                <!--</van-field>-->
             </van-cell-group>
             <div class="wat">
                 注意事项：佣金将直接发放到您的借记卡上，请确保卡号等信息准确无误：
@@ -60,6 +61,7 @@
 
 <script>
     import { CellGroup, Cell, Field, Button, Dialog  } from 'vant';
+    import { userBindCard } from '@/apis'
     export default {
         name: "index",
         data(){
@@ -82,7 +84,34 @@
         },
         methods:{
             pouppA(){
-                this.show=true
+                // this.show=true
+                if(!this.username || !this.idNum || !this.cardNum || !this.phone){
+                    this.$toast({message:'内容不可为空',duration:1500})
+                    return
+                }
+                if(this.phone.length!==11){
+                    this.$toast({message:'手机号格式不正确',duration:1500})
+                    return
+                }
+                if(this.idNum.length!==15 && this.idNum.length!==18 ){
+                    this.$toast({message:'身份证格式不正确',duration:1500})
+                    return
+                }
+                let data={
+                    xm:this.username,
+                    sfz:this.idNum,
+                    yhk:this.cardNum,
+                    phone:this.phone,
+                }
+                userBindCard(data).then(res=>{
+                    if(!res.code){
+                        this.$toast({message:'绑定成功',duration:1500})
+                        const _self=this
+                        setTimeout(()=>{
+                            _self.$router.go(-1)
+                        },1500)
+                    }
+                })
             }
         },
         mounted(){
@@ -117,7 +146,6 @@
          border: 1px solid #ebedf0;
          border-radius: .34rem;
          overflow: hidden;
-
          .van-cell {
              padding: 5px 16px;
          }

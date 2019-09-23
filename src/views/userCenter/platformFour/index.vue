@@ -55,9 +55,9 @@
                     return
                 }
                 let data={
-                    Oldpassword:this.oldPass,
-                    Password:this.newPass,
-                    Password2:this.newPass2,
+                    oldpassword:this.oldPass,
+                    password:this.newPass,
+                    password2:this.newPass2,
                 }
                 Dialog.confirm({
                     title: '提示',
