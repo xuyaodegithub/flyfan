@@ -38,3 +38,9 @@
     -webkit-transform: scaleY(.5);
     transform: scaleY(.5);
 }
+.SharingApplication .van-field__left-icon{
+    margin-right: .2rem;
+}
+.SharingApplication .van-field__left-icon i{
+    font-size: .36rem;
+}

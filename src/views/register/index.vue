@@ -21,7 +21,7 @@
                 <van-field v-model="partpass" placeholder="请再次输入密码" type="password" :border="false" left-icon="invition"
                            v-if="type"/>
             </van-cell-group>
-            <van-button color="#fe4a0f" @click="confire()">{{type ? '立即注册' : '设置新密码'}}</van-button>
+            <van-button color="#fe4a0f" @click="confire()">{{type ? '设置新密码' : '立即注册'}}</van-button>
             <div class="xy" v-if="!type">
                 <van-checkbox v-model="checked" icon-size="0.3rem" checked-color="#fe4a0f">我已阅读并同意<span>《注册协议》</span>
                 </van-checkbox>

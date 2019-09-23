@@ -51,7 +51,7 @@
                     confirm-button-color="#ffa012"
             >
                 <div class="filed">
-                    <van-field v-model="value" placeholder="请输入用户名" />
+                    <van-field v-model="value" placeholder="请输入验证码" />
                 </div>
             </van-dialog>
             <van-button color="linear-gradient(to right, #ff9a67, #ff645f)" round @click="pouppA()">绑定银行卡</van-button>
@@ -59,7 +59,7 @@
 </template>
 
 <script>
-    import { CellGroup, Cell, Field, Button, Toast, Dialog  } from 'vant';
+    import { CellGroup, Cell, Field, Button, Dialog  } from 'vant';
     export default {
         name: "index",
         data(){

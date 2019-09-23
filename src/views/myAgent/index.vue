@@ -69,6 +69,8 @@
         },
         methods:{
             changTab(idx,tit){
+                this.stopScoll=false;
+                this.dataloading=false;
                 this.userAgentList(1)
             },
             userAgentList(k){

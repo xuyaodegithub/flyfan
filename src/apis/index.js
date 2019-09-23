@@ -60,3 +60,19 @@ export const userPutQr=data=> https.get('/user/ewm',data);
  * 退出
  **/
 export const userLogout=data=> https.get('/login/logout',data);
+/**
+ * 意见反馈
+ **/
+export const userFeedback=data=> https.post('/user/yjfk',data);
+/**
+ * 绑定银行卡
+ **/
+export const userBindCard=data=> https.post('/user/yjfk',data);
+/**
+ * 我的消息
+ **/
+export const userNews=data=> https.get('/user/msg',data);
+/**
+ * 修改密码
+ **/
+export const userChangePass=data=> https.post('/user/changepwd',data);

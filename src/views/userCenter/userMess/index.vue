@@ -10,6 +10,7 @@
 
 <script>
     import { Tab, Tabs, Divider } from 'vant';
+    import { userNews } from '@/apis'
     export default {
         name: "index",
         data(){
@@ -22,6 +23,18 @@
             [Tab.name]:Tab,
             [Tabs.name]:Tabs,
             [Divider.name]:Divider,
+        },
+        methods:{
+            initMsgData(){
+                userNews().then(res=>{
+                    if(!res.code){
+                        this.dataList=res.rows
+                    }
+                })
+            }
+        },
+        mounted(){
+            this.initMsgData()
         }
     }
 </script>

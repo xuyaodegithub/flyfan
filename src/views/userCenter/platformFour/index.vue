@@ -27,7 +27,8 @@
 </template>
 
 <script>
-    import { Field,Button,CellGroup } from 'vant'
+    import { Field,Button,CellGroup,Dialog } from 'vant'
+    import { userChangePass } from '@/apis'
     export default {
         name: "index",
         data(){
@@ -41,10 +42,40 @@
             [CellGroup.name]:CellGroup,
             [Field.name]:Field,
             [Button.name]:Button,
+            [Dialog.name]:Dialog,
         },
         methods:{
             configm(){
-
+                if(!this.oldPass || !this.newPass || !this.newPass2){
+                    this.$toast({message:'密码不可为空',duration:1500})
+                    return
+                }
+                if(this.newPass !== this.newPass2){
+                    this.$toast({message:'确认密码不一致',duration:1500})
+                    return
+                }
+                let data={
+                    Oldpassword:this.oldPass,
+                    Password:this.newPass,
+                    Password2:this.newPass2,
+                }
+                Dialog.confirm({
+                    title: '提示',
+                    message: '确认要修改密码么？',
+                    confirmButtonColor:'#fe7007'
+                }).then(() => {
+                    userChangePass(data).then(res=>{
+                        if(!res.code){
+                            this.$toast({message:'修改成功',duration:1500})
+                            const _self=this
+                            setTimeout(()=>{
+                                _self.$router.go(-1)
+                            },1500)
+                        }
+                    })
+                }).catch(() => {
+                    // on cancel
+                });
             }
         }
     }

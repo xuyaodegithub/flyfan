@@ -47,6 +47,9 @@
             details(url){
                this.$router.push(url)
             }
+        },
+        mounted(){
+
         }
     }
 </script>
