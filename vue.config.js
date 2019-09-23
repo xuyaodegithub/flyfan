@@ -18,6 +18,11 @@ module.exports = {
     //             // @/ 是 src/ 的别名
     //             // 所以这里假设你有 `src/variables.scss` 这个文件
     //             // data: `@import "~@/variables.scss";`
+    //         },
+    //         scss: {
+    //             // @/ 是 src/ 的别名
+    //             // 所以这里假设你有 `src/variables.scss` 这个文件
+    //             data: `@import "~@/style/initscss.scss";`
     //         }
     //     }
     // },
