@@ -59,6 +59,7 @@
 
 <script>
     import { CellGroup, Cell, Field, Button,Checkbox  } from 'vant';
+    import { productDetial, shareUserInfo } from '@/apis/index'
     export default {
         name: "SharingApplication",
         data(){
@@ -67,10 +68,19 @@
                 idCard:'',
                 phone:'',
                 yzm:'',
-                checked:false
+                checked:false,
+                productMsg:{},
+                shareInfo:{}
             }
         },
-        computed:{},
+        computed:{
+            produId(){
+                return this.$route.query.id
+            },
+            sharePhone(){
+                return this.$route.query.phone
+            }
+        },
         components:{
             [CellGroup.name]:CellGroup,
             [Cell.name]:Cell,
@@ -78,7 +88,21 @@
             [Button.name]:Button,
             [Checkbox.name]:Checkbox,
         },
-        methods:{},
+        methods:{
+            getproductInfo(){
+                let data={
+                    id:this.produId
+                }
+                productDetial(data).then(res=>{
+                    if(!res.code)this.productMsg=res.msg
+                })
+            },
+            getShareUserInfo(){
+                shareUserInfo({phone:this.sharePhone}).then(res=>{
+                    if(!res.code)this.shareInfo=res.msg
+                })
+            }
+        },
         mounted() {
         }
     }

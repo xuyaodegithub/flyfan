@@ -94,7 +94,6 @@ const upPost=(url,data)=> {//图片上传请求
     url:url,
     dataType:'JSON',
     data:data,
-    headers:{'Content-Type': 'multipart/form-data'}
   })
 }
 

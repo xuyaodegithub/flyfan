@@ -3,7 +3,7 @@
         <div class="flex j-b userinfo a-i" :style="{background: `url(${headerBack}) no-repeat center`}">
             <div class="flex a-i relat">
                 <div class="logo flex a-i">
-                    <img :src="userInfoResult.headimg ? userInfoResult.headimg : 'http://thirdwx.qlogo.cn/mmopen/PiajxSqBRaEIXlLl85lF4fzgzCicZBbRJxHVvoxNrCzO80xoKhuicT4g88FNbJVQIZDkekqLK5s6cweLhDSrLJQ5g/132'"
+                    <img :src="userInfoResult.headimg ? userInfoResult.headimg : imguser"
                          alt="">
                     <img src="../../assets/images/header_border1.png" alt="">
                 </div>
@@ -84,11 +84,13 @@
     import s23 from '@/assets/images/server23.png'
     import s24 from '@/assets/images/server24.png'
     import s25 from '@/assets/images/server25.png'
+    import imguser from '@/assets/images/img_user.png'
     import { userLogout } from '@/apis/index'
     export default {
         name: 'userCenter',
         data() {
             return {
+                imguser,
                 headerBack,
                 backstyle: {
                     backgroundImage: `url(${back})`,

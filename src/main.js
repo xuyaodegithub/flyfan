@@ -19,9 +19,9 @@ Vue.use(VueLazyload, {
   attempt: 3
 });
 
-Vue.prototype.$toast=Toast
+Vue.prototype.$toast=Toast;
 Vue.config.productionTip = false;
-Vue.prototype.$wx=jsdk
+Vue.prototype.$wx=jsdk;
 Object.keys(filters).map(v=>{
   Vue.filter(v,filters[v])
 })

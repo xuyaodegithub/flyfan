@@ -14,14 +14,14 @@
                     <td>手机号</td>
                     <td>本人创造佣金</td>
                     <td>加入日期</td>
-                    <td>{{this.type ? '上级' : '下级'}}</td>
+                    <td>{{type ? '上级' : '下级'}}</td>
                 </tr>
                 <tr v-for="(item,idx) in dataList" :key="idx">
                     <td>{{item.username}}</td>
                     <td>{{item.phone}}</td>
-                    <td>{{item.self}}</td>
+                    <td>{{item.yeji}}</td>
                     <td>{{item.addtime}}</td>
-                    <td>{{this.type ? item.p1 : item.son}}</td>
+                    <td>{{type ? item.p1 : item.son}}</td>
                 </tr>
             </table>
             <van-divider :style="{ color: '#fe4a0f', borderColor: '#fe4a0f', padding: '0 16px' }" v-if="!dataList.length">

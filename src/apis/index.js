@@ -84,8 +84,8 @@ export const userChangePass=data=> https.post('/user/changepwd',data);
 /**
  * 佣金明细
  **/
-export const userDetailCom=data=> https.get('/user/yjmx',data);
+export const userDetailCom=data=> https.post('/user/yjmx',data);
 /**
  * 根据phone获取用户信息
  **/
-export const shareUserInfo=data=> https.post('/product/shareuser',data);
+export const shareUserInfo=data=> https.get('/product/shareuser',data);

@@ -6,8 +6,7 @@ const mixins={
         }
     },
     methods:{
-        initscroll(page,callback){
-            console.log(this.page)
+        initscroll(){
             if(this.stopScoll || this.dataloading)return;
             const scrollTop=document.documentElement.scrollTop || document.body.scrollTop;
             const clientH=document.documentElement.clientHeight;

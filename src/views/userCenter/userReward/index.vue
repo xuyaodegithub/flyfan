@@ -31,7 +31,9 @@
 
 <script>
     import { Button, Toast, Dialog, Cell, Divider } from 'vant';
-    import minixs from '@/minixs'
+    import minixs from '@/minixs';
+    import { getWeekStartDate,getMonthStartDate,getQuarterStartDate,formatDate } from '@/utils/date.js';
+    import { userDetailCom } from '@/apis';
     export default {
         name: "index",
         mixins:[minixs],
@@ -46,7 +48,14 @@
                 ],
                 secBtn:'',
                 dataList:[
-                ]
+                ],
+                page:1,
+                rows:10,
+                type:1,
+                // begindate:'',
+                // enddate:'',
+                level:'',
+                status:'',
             }
         },
         components:{
@@ -55,17 +64,63 @@
             [Cell.name]:Cell,
             [Divider.name]:Divider,
         },
+        computed:{
+            begindate(){
+                console.log(this.secBtn)
+                if(this.secBtn==='')return '';
+                else if(this.secBtn===0)return getWeekStartDate();
+                else if(this.secBtn===1)return getMonthStartDate();
+                else if(this.secBtn===2)return getQuarterStartDate();
+                else if(this.secBtn===3)return new Date().getFullYear()+'-01-01';
+            },
+            enddate(){
+                if(this.secBtn==='')return '';
+                else return formatDate(new Date());
+                // else if(this.secBtn===0)return formatDate();
+                // else if(this.secBtn===1)return formatDate();
+                // else if(this.secBtn===2)return formatDate();
+                // else if(this.secBtn===3)return new Date().getFullYear()+'-01-01';
+            }
+        },
         methods:{
             beforeClose(action,done){
                 if(action==='confirm'){
-                    console.log(this.secBtn)
+                    this.dataloading=false;
+                    this.stopScoll=false;
+                    this.initUserCommition(2)
                     done()
                 }else if(action==='overlay') done()
                 else{
                     this.secBtn='';
                     done(false)
                 }
-            }
+            },
+            initUserCommition(k){
+                this.dataloading=true;
+                let data={
+                    page:this.page,
+                    rows:this.rows,
+                    type:this.type,
+                    begindate:this.begindate,
+                    enddate:this.enddate,
+                    status:this.status,
+                }
+                console.log(data);
+                userDetailCom(data).then(res=>{
+                    if(!res.code){
+                        if(k===1)this.dataList=res.rows;
+                        else this.dataList=[...this.dataList,...res.rows];
+                        if(res.rows.length<10) this.stopScoll=true;
+                    }
+                    this.dataloading=false
+                })
+            },
+        },
+        mounted(){
+            window.addEventListener('scroll',this.initscroll)
+        },
+        destroyed(){
+            window.removeEventListener('scroll',this.initscroll)
         }
     }
 </script>

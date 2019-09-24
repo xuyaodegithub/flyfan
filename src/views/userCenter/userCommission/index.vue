@@ -30,90 +30,6 @@
                     <td>佣金流水号</td>
                     <td>佣金金额</td>
                     <td>来源</td>
-                </tr> <tr>
-                    <td>佣金流水号</td>
-                    <td>佣金金额</td>
-                    <td>来源</td>
-                </tr> <tr>
-                    <td>佣金流水号</td>
-                    <td>佣金金额</td>
-                    <td>来源</td>
-                </tr> <tr>
-                    <td>佣金流水号</td>
-                    <td>佣金金额</td>
-                    <td>来源</td>
-                </tr> <tr>
-                    <td>佣金流水号</td>
-                    <td>佣金金额</td>
-                    <td>来源</td>
-                </tr> <tr>
-                    <td>佣金流水号</td>
-                    <td>佣金金额</td>
-                    <td>来源</td>
-                </tr> <tr>
-                    <td>佣金流水号</td>
-                    <td>佣金金额</td>
-                    <td>来源</td>
-                </tr> <tr>
-                    <td>佣金流水号</td>
-                    <td>佣金金额</td>
-                    <td>来源</td>
-                </tr> <tr>
-                    <td>佣金流水号</td>
-                    <td>佣金金额</td>
-                    <td>来源</td>
-                </tr> <tr>
-                    <td>佣金流水号</td>
-                    <td>佣金金额</td>
-                    <td>来源</td>
-                </tr> <tr>
-                    <td>佣金流水号</td>
-                    <td>佣金金额</td>
-                    <td>来源</td>
-                </tr> <tr>
-                    <td>佣金流水号</td>
-                    <td>佣金金额</td>
-                    <td>来源</td>
-                </tr> <tr>
-                    <td>佣金流水号</td>
-                    <td>佣金金额</td>
-                    <td>来源</td>
-                </tr> <tr>
-                    <td>佣金流水号</td>
-                    <td>佣金金额</td>
-                    <td>来源</td>
-                </tr> <tr>
-                    <td>佣金流水号</td>
-                    <td>佣金金额</td>
-                    <td>来源</td>
-                </tr> <tr>
-                    <td>佣金流水号</td>
-                    <td>佣金金额</td>
-                    <td>来源</td>
-                </tr> <tr>
-                    <td>佣金流水号</td>
-                    <td>佣金金额</td>
-                    <td>来源</td>
-                </tr> <tr>
-                    <td>佣金流水号</td>
-                    <td>佣金金额</td>
-                    <td>来源</td>
-                </tr> <tr>
-                    <td>佣金流水号</td>
-                    <td>佣金金额</td>
-                    <td>来源</td>
-                </tr> <tr>
-                    <td>佣金流水号</td>
-                    <td>佣金金额</td>
-                    <td>来源</td>
-                </tr> <tr>
-                    <td>佣金流水号</td>
-                    <td>佣金金额</td>
-                    <td>来源</td>
-                </tr> <tr>
-                    <td>佣金流水号</td>
-                    <td>佣金金额</td>
-                    <td>来源</td>
                 </tr>
             </table>
             <van-divider v-if="!dataList.length">暂无数据</van-divider>
@@ -148,7 +64,7 @@
                 ],
                 page:1,
                 rows:10,
-                type:1,
+                type:0,
                 // begindate:'',
                 // enddate:'',
                 level:'',
@@ -203,9 +119,9 @@
                     begindate:this.begindate,
                     enddate:this.enddate,
                     level:this.firstBtn,
-                    status:this.status,
+                    // status:this.status,
                 }
-                console.log(data)
+                console.log(data);
                 userDetailCom(data).then(res=>{
                     if(!res.code){
                         if(k===1)this.dataList=res.rows;
