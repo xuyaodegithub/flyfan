@@ -1,6 +1,6 @@
 <template>
     <div class="Record">
-        <van-tabs v-model="activeName"  type="card"  @change="changTab" sticky color="#fe4a0f">
+        <van-tabs v-model="activeName"  type="card"  @change="changTab" sticky  background="#606266" title-inactive-color="#fff" title-active-color="#fff" :swipe-threshold="6">
             <van-tab title="自身" name="1"></van-tab>
             <van-tab title="一" name="2"></van-tab>
             <van-tab title="二" name="3"></van-tab>
@@ -32,7 +32,7 @@
                 <span>{{item.yjyj}}</span>
                 <span>宜人贷</span>
             </div>
-            <van-divider :style="{ color: '#fe4a0f', borderColor: '#fe4a0f', padding: '0 16px' }" v-if="dataList.length<1">
+            <van-divider :style="{  padding: '0 16px' }" v-if="dataList.length<1">
                 暂无数据
             </van-divider>
         </div>
@@ -122,15 +122,15 @@
             text-align: center;
             .head{
                 &:nth-child(2n-1){
-                    background-color: #efdbb2;
+                    background-color: #F2F6FC;
                 }
                 flex-wrap: wrap;
-                border-left: 1px solid #fe4a0f;
-                border-top: 1px solid #fe4a0f;
+                border-left: 1px solid #C0C4CC;
+                border-top: 1px solid #C0C4CC;
                 margin-bottom: .1rem;
                 span{
-                    border-bottom: 1px solid #fe4a0f;
-                    border-right: 1px solid #fe4a0f;
+                    border-bottom: 1px solid #C0C4CC;
+                    border-right: 1px solid #C0C4CC;
                     width: 33.33%;
                 }
                 span:nth-child(1),span:nth-child(2){
@@ -146,7 +146,7 @@
                 font-size: .28rem;
                 font-weight: 500;
                 span{
-                    color:#fe4a0f;
+                    color:#F56C6C;
                 }
             }
         }

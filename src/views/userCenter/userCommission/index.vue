@@ -31,6 +31,11 @@
                     <td>佣金金额</td>
                     <td>来源</td>
                 </tr>
+                <tr v-for="(item,idx) in dataList" :key="idx">
+                    <td>{{item.id}}</td>
+                    <td>{{item.price}}</td>
+                    <td>{{item.title}}</td>
+                </tr>
             </table>
             <van-divider v-if="!dataList.length">暂无数据</van-divider>
         </div>
@@ -101,7 +106,7 @@
                    // console.log(this.firstBtn,this.secBtn)
                    this.dataloading=false;
                    this.stopScoll=false;
-                  this.initUserCommition(2)
+                  this.initUserCommition(1)
                    done()
                }else if(action==='overlay') done()
                else{
@@ -133,6 +138,7 @@
             },
         },
         mounted(){
+            this.initUserCommition(1)
             window.addEventListener('scroll',this.initscroll)
         },
         destroyed(){

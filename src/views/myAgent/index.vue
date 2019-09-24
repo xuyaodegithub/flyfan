@@ -1,6 +1,6 @@
 <template>
     <div class="agent">
-        <van-tabs v-model="activeName"  type="card"  @change="changTab" sticky color="#fe4a0f">
+        <van-tabs v-model="activeName"  type="card"  @change="changTab" sticky background="#606266" title-inactive-color="#fff" title-active-color="#fff" :swipe-threshold="6">
             <van-tab title="自身" name="0"></van-tab>
             <van-tab title="一" name="1"></van-tab>
             <van-tab title="二" name="2"></van-tab>
@@ -31,7 +31,7 @@
                     <td>{{item.addtime}}</td>
                 </tr>
             </table>
-            <van-divider :style="{ color: '#fe4a0f', borderColor: '#fe4a0f', padding: '0 16px' }" v-if="dataList.length<1">
+            <van-divider :style="{ padding: '0 16px' }" v-if="dataList.length<1">
                 暂无数据
             </van-divider>
         </div>
@@ -136,7 +136,7 @@
                     flex: 1;
                 }
                 &:first-child{
-                    border-bottom: 2px solid #fe4a0f;
+                    border-bottom: 1px solid #ee0a24;
                 }
             }
         }
@@ -153,7 +153,7 @@
             padding: .2rem 0;
             tr{
                 display: block;
-                border-bottom: 2px solid #fe4a0f;
+                border-bottom: 1px solid #ee0a24;
                 td{
                     display: inline-block;
                     width: 22%;
