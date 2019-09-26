@@ -38,9 +38,9 @@ instance.interceptors.response.use(function (response) {//为自定义axios设�
   }else if(res.code===100){
       router.replace('/login')
       return Promise.reject(response.data)
-  } else if(res.code===900){
+  }/* else if(res.code===900){
       window.location.href=res.url
-  }else{
+  }*/else{
       Toast(response.data.msg)
       return res
   //   // return Promise.reject(response.data)
