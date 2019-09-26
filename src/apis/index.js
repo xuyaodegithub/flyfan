@@ -44,7 +44,7 @@ export const productDetial=data=> https.get('/product/detail',data);
 /**
  * 推荐贷款
  **/
-export const productQr=data=> https.get('/product/tjdk',data);
+export const productQr=data=> https.get('/user/tjdk',data);
 /**
  * 产品大纲
  **/
@@ -89,3 +89,7 @@ export const userDetailCom=data=> https.post('/user/yjmx',data);
  * 根据phone获取用户信息
  **/
 export const shareUserInfo=data=> https.get('/product/shareuser',data);
+/**
+ * 申请产品
+ **/
+export const userUpdataP=data=> https.get('/product/sqdk',data);

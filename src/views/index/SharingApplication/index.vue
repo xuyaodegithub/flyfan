@@ -2,6 +2,10 @@
     <div class="SharingApplication">
         <div class="banner">
             <img src="../../../assets/images/shareBanner.png" alt="">
+            <div class="posi">
+                <h4>{{productMsg.name}}</h4>
+                <h3>{{productMsg.edqj}}</h3>
+            </div>
         </div>
         <div class="outInfo">
             <div class="info">
@@ -24,32 +28,32 @@
                             type="tel"
                             v-model="phone"
                     />
-                    <van-field
-                            placeholder="动态验证码"
-                            left-icon="comment-circle-o"
-                            type="number"
-                            center
-                            v-model="yzm"
-                    >
-                    <van-button slot="button" size="mini" type="primary">获取验证码</van-button>
-                    </van-field>
+                    <!--<van-field-->
+                            <!--placeholder="动态验证码"-->
+                            <!--left-icon="comment-circle-o"-->
+                            <!--type="number"-->
+                            <!--center-->
+                            <!--v-model="yzm"-->
+                    <!--&gt;-->
+                    <!--<van-button slot="button" size="mini" type="primary">获取验证码</van-button>-->
+                    <!--</van-field>-->
                 </van-cell-group>
                 <div class="xy">
                     <van-checkbox v-model="checked" icon-size="0.3rem" checked-color="#fe4a0f">我已阅读并接受<span>《注册协议》</span>
                     </van-checkbox>
                 </div>
                 <div>
-                    <van-button color="linear-gradient(to right, #ff9a67,#ff645f)">立即注册</van-button>
+                    <van-button color="linear-gradient(to right, #ff9a67,#ff645f)" @click="userGo()">立即注册</van-button>
                 </div>
             </div>
         </div>
         <a class="cancat flex a-i j-b" href="tel:16605813146" >
             <div>
                 <img src="../../../assets/images/img_user.png" alt="">
-                <span>需要</span>
+                <span>{{shareInfo.username}}</span>
             </div>
             <div>
-                <span>16605813146</span>
+                <span>{{shareInfo.phone}}</span>
                 <img src="../../../assets/images/img_tel.png" alt="">
             </div>
         </a>
@@ -59,7 +63,7 @@
 
 <script>
     import { CellGroup, Cell, Field, Button,Checkbox  } from 'vant';
-    import { productDetial, shareUserInfo } from '@/apis/index'
+    import { productDetial, shareUserInfo,userUpdataP } from '@/apis/index'
     export default {
         name: "SharingApplication",
         data(){
@@ -75,7 +79,7 @@
         },
         computed:{
             produId(){
-                return this.$route.query.id
+                return this.$route.query.productid
             },
             sharePhone(){
                 return this.$route.query.phone
@@ -101,9 +105,40 @@
                 shareUserInfo({phone:this.sharePhone}).then(res=>{
                     if(!res.code)this.shareInfo=res.msg
                 })
+            },
+            userGo(){
+                if(!this.username || !this.idCard || !this.phone){
+                    this.$toast({message:'请先完善信息',duration:1500})
+                    return
+                }
+                if(this.phone.length!==11){
+                    this.$toast({message:'手机号格式不正确',duration:1500})
+                    return
+                }
+                if(!this.checked){
+                    this.$toast({message:'请先阅读并勾选注册协议',duration:1500})
+                    return
+                }
+                let data={
+                    phone:this.phone,
+                    sfz:this.idCard,
+                    xm:this.username,
+                    productid:this.produId,
+                    memberid:this.shareInfo.id
+                 }
+                userUpdataP(data).then(res=>{
+                    if(!res.code){
+                        this.$toast({message:'申请成功',duration:1500})
+                        setTimeout(()=>{
+                            this.$router.replace('/')
+                        },1500)
+                    }
+                })
             }
         },
         mounted() {
+            this.getproductInfo()
+            this.getShareUserInfo()
         }
     }
 </script>
@@ -112,8 +147,23 @@
     $bc: #fe4a0f;
     $fc: #fe7007;
 .banner{
+    position: relative;
+    .posi{
+        position: absolute;
+        top: .2rem;
+        left: 0;
+        text-align: center;
+        width: 100%;
+        font-size: .9rem;
+        color: #fff;
+        line-height: 1;
+        h4{
+            margin-bottom: .3rem;
+        }
+    }
     img{
         display: block;
+        width: 100%;
     }
 }
 .outInfo{
