@@ -1,6 +1,8 @@
 <template>
         <div class="userCommission">
-            <van-cell title="条件筛选" is-link arrow-direction="down"  @click="show=true"/>
+            <van-sticky>
+                <van-cell title="条件筛选" is-link arrow-direction="down"  @click="show=true"/>
+            </van-sticky>
             <van-dialog
                     v-model="show"
                     title="条件筛选"
@@ -42,7 +44,7 @@
 </template>
 
 <script>
-    import { Button, Toast, Dialog, Cell, Divider } from 'vant';
+    import { Button, Toast, Dialog, Cell, Divider,Sticky } from 'vant';
     import { userDetailCom } from '@/apis'
     import minixs from '@/minixs'
     import { getWeekStartDate,getMonthStartDate,getQuarterStartDate,formatDate } from '@/utils/date.js'
@@ -99,6 +101,7 @@
             [Dialog.Component.name]:Dialog.Component,
             [Cell.name]:Cell,
             [Divider.name]:Divider,
+            [Sticky.name]:Sticky,
         },
         methods:{
             beforeClose(action,done){

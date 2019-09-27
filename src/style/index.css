@@ -62,3 +62,7 @@
     line-height: .8rem;
     height: .8rem;
 }
+.Record .van-tabs--card>.van-tabs__wrap,.agent .van-tabs--card>.van-tabs__wrap{
+    line-height: .8rem;
+    height: .8rem;
+}

@@ -1,13 +1,15 @@
 <template>
     <div class="agent">
-        <van-tabs v-model="activeName"  type="card"  @change="changTab" sticky background="#606266" title-inactive-color="#fff" title-active-color="#fff" :swipe-threshold="6">
-            <van-tab title="自身" name="0"></van-tab>
-            <van-tab title="一" name="1"></van-tab>
-            <van-tab title="二" name="2"></van-tab>
-            <van-tab title="三" name="3"></van-tab>
-            <van-tab title="四" name="4"></van-tab>
-            <van-tab title="..." name="5"></van-tab>
-        </van-tabs>
+        <van-sticky>
+            <van-tabs v-model="activeName"  type="card"  @change="changTab" background="#606266" title-inactive-color="#fff" title-active-color="#fff" :swipe-threshold="6">
+                <van-tab title="自身" name="0"></van-tab>
+                <van-tab title="一" name="1"></van-tab>
+                <van-tab title="二" name="2"></van-tab>
+                <van-tab title="三" name="3"></van-tab>
+                <van-tab title="四" name="4"></van-tab>
+                <van-tab title="..." name="5"></van-tab>
+            </van-tabs>
+        </van-sticky>
         <div class="a_title">
             <div class="a_tags j-b flex">
                 <span>级别</span><span>人数</span><span>战绩</span>
@@ -41,7 +43,7 @@
 
 <script>
     // @ is an alias to /src
-    import { Tab, Tabs, Toast, Divider } from 'vant';
+    import { Tab, Tabs, Toast, Divider, Sticky } from 'vant';
     import { userAgent } from '@/apis/index'
 
     export default {
@@ -63,6 +65,7 @@
             [Tabs.name]:Tabs,
             [Toast.name]:Toast,
             [Divider.name]:Divider,
+            [Sticky.name]:Sticky,
         },
         computed:{
 

@@ -1,13 +1,15 @@
 <template>
     <div class="Record">
-        <van-tabs v-model="activeName"  type="card"  @change="changTab" sticky  background="#606266" title-inactive-color="#fff" title-active-color="#fff" :swipe-threshold="6">
-            <van-tab title="自身" name="1"></van-tab>
-            <van-tab title="一" name="2"></van-tab>
-            <van-tab title="二" name="3"></van-tab>
-            <van-tab title="三" name="4"></van-tab>
-            <van-tab title="四" name="5"></van-tab>
-            <van-tab title="..." name="6"></van-tab>
-        </van-tabs>
+        <van-sticky>
+            <van-tabs v-model="activeName"  type="card"  @change="changTab"  background="#606266" title-inactive-color="#fff" title-active-color="#fff" :swipe-threshold="6">
+                <van-tab title="自身" name="1"></van-tab>
+                <van-tab title="一" name="2"></van-tab>
+                <van-tab title="二" name="3"></van-tab>
+                <van-tab title="三" name="4"></van-tab>
+                <van-tab title="四" name="5"></van-tab>
+                <van-tab title="..." name="6"></van-tab>
+            </van-tabs>
+        </van-sticky>
         <div class="tables">
             <div class="head flex">
                 <span>归属者</span>
@@ -21,7 +23,7 @@
                 <span>申请渠道名</span>
             </div>
             <h4>下款客户数：<span>{{dataList.length}}</span></h4>
-            <div class="head flex" v-for="(item,idx) in dataList">
+            <div class="head flex" v-for="(item,idx) in dataList" :key="idx">
                 <span>{{item.memberusername}}</span>
                 <span>{{item.memberphone}}</span>
                 <span>{{item.username}}</span>
@@ -42,7 +44,7 @@
 
 <script>
     // @ is an alias to /src
-    import { Tab, Tabs, Toast, Divider  } from 'vant';
+    import { Tab, Tabs, Toast, Divider,Sticky  } from 'vant';
     import { userRecord } from '@/apis/index'
 
     export default {
@@ -61,7 +63,8 @@
             [Tab.name]:Tab,
             [Tabs.name]:Tabs,
             [Toast.name]:Toast,
-            [Divider .name]:Divider ,
+            [Divider.name]:Divider ,
+            [Sticky.name]:Sticky ,
         },
         computed:{
 

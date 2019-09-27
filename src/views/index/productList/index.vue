@@ -1,35 +1,52 @@
 <template>
-    <div class="productList">
-        <div v-for="(item,idx) in dataList" :key="idx" @click="goDetail(item)">
-            <div class="tit_top flex j-b a-i">
-                <div>
-                    <img v-lazy="item.img" alt="">
-                    <span class="tit">{{item.name}}</span>
-                    <van-tag plain type="success" v-if="item.rz==1">企业认证</van-tag>
+    <div>
+        <van-sticky>
+            <van-tabs v-model="activeName"  @change="changTab" title-active-color="#fe7007" color="#fe7007">
+                <van-tab title="" :name="1">
+                    <div slot="title">
+                        <van-icon name="card" />信用卡
+                    </div>
+                </van-tab>
+                <van-tab title="" :name="2" >
+                    <div slot="title">
+                        <van-icon name="gold-coin" />贷款
+                    </div>
+                </van-tab>
+            </van-tabs>
+        </van-sticky>
+        <div class="productList">
+            <div v-for="(item,idx) in dataList" :key="idx" @click="goDetail(item)">
+                <div class="tit_top flex j-b a-i">
+                    <div>
+                        <img v-lazy="item.img" alt="">
+                        <span class="tit">{{item.name}}</span>
+                        <van-tag plain type="success" v-if="item.rz==1">企业认证</van-tag>
+                    </div>
+                    <van-tag color="#f2826a" round >立即推荐</van-tag>
                 </div>
-                <van-tag color="#f2826a" round >立即推荐</van-tag>
-            </div>
-            <div class="flex j-b a-i detial">
-                <div>
-                    <p>{{item.edqj}}</p>
-                    <p>额度</p>
+                <div class="flex j-b a-i detial">
+                    <div>
+                        <p>{{item.edqj}}</p>
+                        <p>额度</p>
+                    </div>
+                    <div>
+                        <p>{{item.zdlv}}</p>
+                        <p>最低利率</p>
+                    </div>
+                    <div>
+                        <p>{{item.qx}}</p>
+                        <p>期限</p>
+                    </div>
                 </div>
-                <div>
-                    <p>{{item.zdlv}}</p>
-                    <p>最低利率</p>
-                </div>
-                <div>
-                    <p>{{item.qx}}</p>
-                    <p>期限</p>
-                </div>
-            </div>
 
+            </div>
         </div>
     </div>
+
 </template>
 
 <script>
-    import { Tag  } from 'vant';
+    import { Tag,Tab, Tabs,Icon,Sticky } from 'vant';
     import { productList } from '@/apis/index'
     import  minix  from '@/minixs/index'
     export default {
@@ -37,6 +54,7 @@
         mixins:[minix],
         data(){
             return {
+                activeName:0,
                 dataList:[
                     // {title:'微业贷',img:'http://bank-mg.dachagui.com/statics/upload/4917/6934/6c8ae030be397ef0a0c1d75c9e9a45df.png',ed:'1w-300w',zd:'0.66%',qixian:'12-36月'},
                     // {title:'微业贷',img:'http://bank-mg.dachagui.com/statics/upload/4917/6934/6c8ae030be397ef0a0c1d75c9e9a45df.png',ed:'1w-300w',zd:'0.66%',qixian:'12-36月'},
@@ -51,8 +69,15 @@
         },
         components:{
             [Tag.name]:Tag,
+            [Tabs.name]:Tabs,
+            [Tab.name]:Tab,
+            [Icon.name]:Icon,
+            [Sticky.name]:Sticky,
         },
         methods:{
+            changTab(idx,tit){
+                this.initList()
+            },
             initList(){
                 let data={
                     page:this.page,
@@ -74,6 +99,10 @@
 </script>
 
 <style scoped lang="scss">
+    .van-icon{
+        vertical-align: middle;
+        margin-right: .15rem;
+    }
 .productList{
     padding: .3rem;
     font-size: .28rem;

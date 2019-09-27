@@ -1,6 +1,8 @@
 <template>
     <div class="userReward">
-        <van-cell title="条件筛选" is-link arrow-direction="down"  @click="show=true"  value="共赚取奖励金30元" value-class="vcolor" />
+        <van-sticky>
+            <van-cell title="条件筛选" is-link arrow-direction="down"  @click="show=true"  value="共赚取奖励金30元" value-class="vcolor" />
+        </van-sticky>
         <van-dialog
                 v-model="show"
                 title="条件筛选"
@@ -35,7 +37,7 @@
 </template>
 
 <script>
-    import { Button, Toast, Dialog, Cell, Divider } from 'vant';
+    import { Button, Toast, Dialog, Cell, Divider, Sticky } from 'vant';
     import minixs from '@/minixs';
     import { getWeekStartDate,getMonthStartDate,getQuarterStartDate,formatDate } from '@/utils/date.js';
     import { userDetailCom } from '@/apis';
@@ -68,6 +70,7 @@
             [Dialog.Component.name]:Dialog.Component,
             [Cell.name]:Cell,
             [Divider.name]:Divider,
+            [Sticky.name]:Sticky,
         },
         computed:{
             begindate(){

@@ -41,6 +41,11 @@ textarea{resize:none;}/*禁止多行文本输入框的拖动*/
     display: -webkit-flex;
     display: flex;
 }
+/*全是字母时  单词断开换行显示*/
+.ab{
+    word-wrap:break-word;
+    word-break:break-all;
+}
 
 /*文本溢出 出现省略号*/
 .over{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}

@@ -130,7 +130,7 @@
                     if(!res.code){
                         this.$toast({message:'申请成功',duration:1500})
                         setTimeout(()=>{
-                            this.$router.replace('/')
+                            this.$router.replace('/login')
                         },1500)
                     }
                 })
