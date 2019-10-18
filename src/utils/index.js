@@ -19,6 +19,14 @@ export const myBrowser=()=>{//判断浏览器类型
     if (userAgent.indexOf("QQBrowser") > -1) return "QQ"; //判断是否QQ浏览器
     else return 'IE'//不认识一律ie处理
 }
+export const BrowserInfo = {//目前主要支持 安卓 & 苹果 & ipad & 微信 & 支付宝 & 是否是手机端。
+    isAndroid: Boolean(navigator.userAgent.match(/android/ig)),
+    isIphone: Boolean(navigator.userAgent.match(/iphone|ipod/ig)),
+    isIpad: Boolean(navigator.userAgent.match(/ipad/ig)),
+    isWeixin: Boolean(navigator.userAgent.match(/MicroMessenger/ig)),
+    isAli: Boolean(navigator.userAgent.match(/AlipayClient/ig)),
+    isPhone: Boolean(/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent))
+}
 //获取某一区间随机数
 export const getrandom=(min, max)=> {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -102,25 +110,11 @@ export const overTime=(val,num) =>{
             mint: mint,
             sec: sec
         }
-    }else{
-        return {
-            hours: hours,
-            mint: mint,
-            sec: sec
-        }
     }
 }
 //判断类型
 export const JudgmentType=(val)=>{
   return Object.prototype.toString.call(val).split(' ')[1].split(']')[0]
-}
-export const BrowserInfo = {//目前主要支持 安卓 & 苹果 & ipad & 微信 & 支付宝 & 是否是手机端。
-    isAndroid: Boolean(navigator.userAgent.match(/android/ig)),
-    isIphone: Boolean(navigator.userAgent.match(/iphone|ipod/ig)),
-    isIpad: Boolean(navigator.userAgent.match(/ipad/ig)),
-    isWeixin: Boolean(navigator.userAgent.match(/MicroMessenger/ig)),
-    isAli: Boolean(navigator.userAgent.match(/AlipayClient/ig)),
-    isPhone: Boolean(/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent))
 }
 //canvas画文本自动换行原型方法
 export const setCanvasText=()=>{
@@ -154,3 +148,15 @@ export const setCanvasText=()=>{
         context.fillText(line, x, y);
     };
 }
+//两数组的交集
+export const intersection = (a, b) => {
+    const s = new Set(b);
+    return a.filter(x => s.has(x));
+};
+//生成两数之间指定长度的随机数组
+export const randomIntArrayInRange = (min, max, n = 1) =>
+    Array.from({ length: n }, () => Math.floor(Math.random() * (max - min + 1)) + min);
+
+// randomIntArrayInRange(12, 35, 10); // [ 34, 14, 27, 17, 30, 27, 20, 26, 21, 14 ]
+//每个单词首字母大写
+export const capitalizeEveryWord  = str => str.replace(/\b[a-z]/g, char => char.toUpperCase());
